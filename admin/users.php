@@ -15,7 +15,7 @@
     <!-- My CSS -->
 
     <link rel="icon" type="png" href="asset/img/branding.png" />
-    <title>Alumni Locator Management System - Alumni Students</title>
+    <title>Alumni Locator Management System - Users</title>
 </head>
 
 <body>
@@ -39,13 +39,13 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="users.php">
                     <i class='bx bxs-group'></i>
                     <span class="text">Users</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a href="alumni students.php">
                     <i class='bx bxs-shopping-bag-alt'></i>
                     <span class="text">Alumni Students</span>
@@ -116,64 +116,104 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Alumni Students</h1>
+                    <h1>Users</h1>
                     <ul class="breadcrumb">
                         <li>
                             <a href="">Dashboard</a>
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
-                            <a class="active" href="#">Alumni students</a>
+                            <a class="active" href="#">Users</a>
                         </li>
                     </ul>
                 </div>
-                <a href="#" class="btn-download">
-                    <i class='bx bx-plus'></i>
+                <!-- <a href="#" class="btn-download">
+                    <i class='bx bxs-cloud-download'></i>
                     <span class="text">Add Alumni students</span>
-                </a>
+                </a> -->
             </div>
 
             <div class="table-data row m-auto mt-4">
                 <div class="">
                     <div class="head">
-                        <h3>Alumni Students</h3>
+                        <h3>Users Table</h3>
                     </div>
                     <table class="table table-borderless align-middle table-hover">
                         <thead>
                             <tr>
-                                <th>Lastname</th>
-                                <th>Firstname</th>
-                                <th>Middlename</th>
-                                <th>Campus</th>
-                                <th>Student number</th>
-                                <th>Gender</th>
+                                <th>Name</th>
                                 <th>Program</th>
-                                <th>Section</th>
+                                <th>Gender</th>
                                 <th>Status</th>
-                                <th>Batch</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM alumnis ORDER BY lastname DESC";
+                            $query = "SELECT * FROM users";
                             $query_run = mysqli_query($conn, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
                             ?>
                                     <tr>
+                                        <td width="200">
+                                            <div class="d-flex gap-4">
 
-                                        <td><?= $row['lastname']; ?></td>
-                                        <td><?= $row['firstname']; ?></td>
-                                        <td><?= $row['middlename']; ?></td>
-                                        <td><?= $row['campus']; ?></td>
-                                        <td><?= $row['studentNumber']; ?></td>
-                                        <td><?= $row['gender']; ?></td>
-                                        <td><?= $row['program']; ?></td>
-                                        <td><?= $row['section']; ?></td>
-                                        <td><?= $row['status']; ?></td>
-                                        <td><?= $row['batch']; ?></td>
+                                                <img src="../img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+                                                <p class="fw-bold mb-1">
+                                                    <?= $row['firstname']; ?> <?= $row['lastname']; ?>
+                                                    <br>
+                                                    <small>
+                                                        <a class="text-muted mb-0" id="default-a" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?= $row['email']; ?>" title="<?= $row['firstname']; ?> <?= $row['lastname']; ?>" target="_blank">
+                                                            <?= $row['email']; ?>
+                                                        </a>
+                                                    </small>
+                                                </p>
+
+
+                                            </div>
+                                        </td>
+
+                                        <td><?= $row['course']; ?></td>
+
+                                        <td>Male</td>
+
+
+                                        <td>
+                                            <div class="d-flex justify-content-between">
+
+                                                <p>
+
+                                                    <?php
+                                                    if ($row['job_status'] == '1') {
+                                                    ?>
+                                                        <span class="status completed">Working</span>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <span class="status pending">Searching</span>
+                                                    <?php
+                                                    }
+
+                                                    ?>
+                                                </p>
+
+                                                <li class="nav-item dropdown">
+                                                    <a class=" second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class='bx bx-dots-vertical-rounded'></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                                        <li>
+                                                            <a class="dropdown-item" href='../visit profile.php?id=<?php echo $row['id'] ?>' target="_blank">View profile</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </div>
+
+                                        </td>
+
                                     </tr>
                                 <?php
                                 }
@@ -231,7 +271,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.table').DataTable({
-                // "dom": 'ftip'
+                // "dom": 'rtip'
             });
 
         });

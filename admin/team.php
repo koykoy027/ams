@@ -15,7 +15,7 @@
     <!-- My CSS -->
 
     <link rel="icon" type="png" href="asset/img/branding.png" />
-    <title>Alumni Locator Management System - Alumni Students</title>
+    <title>Alumni Locator Management System - Team</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
                     <span class="text">Users</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a href="alumni students.php">
                     <i class='bx bxs-shopping-bag-alt'></i>
                     <span class="text">Alumni Students</span>
@@ -66,7 +66,7 @@
             </li>
         </ul>
         <ul class="side-menu">
-            <li>
+            <li class="active">
                 <a href="team.php">
                     <i class='bx bxs-cog'></i>
                     <span class="text">Team</span>
@@ -108,7 +108,6 @@
                     <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#logout">Logout</a></li>
                 </ul>
             </li>
-
         </nav>
         <!-- NAVBAR -->
 
@@ -116,64 +115,92 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Alumni Students</h1>
+                    <h1>Meet The Team</h1>
                     <ul class="breadcrumb">
                         <li>
                             <a href="">Dashboard</a>
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
-                            <a class="active" href="#">Alumni students</a>
+                            <a class="active" href="#">Team</a>
                         </li>
                     </ul>
                 </div>
                 <a href="#" class="btn-download">
                     <i class='bx bx-plus'></i>
-                    <span class="text">Add Alumni students</span>
+                    <span class="text">Add Team</span>
                 </a>
             </div>
 
             <div class="table-data row m-auto mt-4">
                 <div class="">
                     <div class="head">
-                        <h3>Alumni Students</h3>
+                        <h3>Team Table</h3>
                     </div>
                     <table class="table table-borderless align-middle table-hover">
                         <thead>
                             <tr>
-                                <th>Lastname</th>
-                                <th>Firstname</th>
-                                <th>Middlename</th>
-                                <th>Campus</th>
-                                <th>Student number</th>
+                                <th>Name</th>
+                                <th>Email</th>
                                 <th>Gender</th>
-                                <th>Program</th>
-                                <th>Section</th>
                                 <th>Status</th>
-                                <th>Batch</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM alumnis ORDER BY lastname DESC";
+                            $query = "SELECT * FROM admins";
                             $query_run = mysqli_query($conn, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
                             ?>
                                     <tr>
-
-                                        <td><?= $row['lastname']; ?></td>
-                                        <td><?= $row['firstname']; ?></td>
-                                        <td><?= $row['middlename']; ?></td>
-                                        <td><?= $row['campus']; ?></td>
-                                        <td><?= $row['studentNumber']; ?></td>
+                                        <th>
+                                            <img src="asset/img/avatar/<?= $row['avatar']; ?>" style="width:45px; height:45px; margin-right: 2%;" class="rounded-circle">
+                                            <?= $row['firstname']; ?> <?= $row['lastname']; ?>
+                                        </th>
+                                        <td>
+                                            <a class="text-muted mb-0" id="default-a" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?= $row['email']; ?>" title="<?= $row['firstname']; ?> <?= $row['lastname']; ?>" target="_blank">
+                                                <?= $row['email']; ?>
+                                            </a>
+                                        </td>
                                         <td><?= $row['gender']; ?></td>
-                                        <td><?= $row['program']; ?></td>
-                                        <td><?= $row['section']; ?></td>
-                                        <td><?= $row['status']; ?></td>
-                                        <td><?= $row['batch']; ?></td>
+
+                                        <td>
+                                            <div class="d-flex justify-content-between">
+
+                                                <p>
+
+                                                    <?php
+                                                    if ($row['status'] == '1') {
+                                                    ?>
+                                                        <span class="status completed">Active</span>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <span class="status pending">Inactive</span>
+                                                    <?php
+                                                    }
+
+                                                    ?>
+                                                </p>
+
+                                                <li class="nav-item dropdown">
+                                                    <a class=" second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class='bx bx-dots-vertical-rounded'></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                                        <li>
+                                                            <a class="dropdown-item" href="" target="_blank">Update</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </div>
+
+                                        </td>
+
                                     </tr>
                                 <?php
                                 }

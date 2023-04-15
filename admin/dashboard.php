@@ -1,293 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link rel="icon" href="../img/AMS Logo.png">
-    <link rel="stylesheet" href="../css/fontawesome-free-6.0.0-web/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />    
-    <link rel="icon" href="../img/AMS Logo.png">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>    
-    <link rel="stylesheet" href="styles.css" />
-    <title>
-        AMS Admin Dashboard
-    </title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+	<link rel="stylesheet" href="asset/style.css">
+	<!-- My CSS -->
+
+	<link rel="icon" type="png" href="asset/img/branding.png" />
+	<title>Alumni Locator Management System - Dashboard</title>
 </head>
 
-
-<?php
-    require '../connection/config.php';
-    session_start();    
-    if (!isset($_SESSION['username'])){
-        header("Location: index.php");
-        
-}
-
-
- ?>
-
-
 <body>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar -->
-        <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class="fas fa-user-secret me-2"></i>Alumni mangement system</div>
-            <div class="list-group list-group-flush my-3">
-                <a href="dashboard.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
-                        class="fas fa-tachometer-alt me-2"></i>Dashboard</a>                
-                <a href="alumni students.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2"></i>Alumni Students</a>
-                <a href="registered alumni.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-chart-line me-2"></i>Registered alumni Students</a>
-                <a href="email.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-paperclip me-2"></i>E-mail</a>
-                <a href="appointment.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-paperclip me-2"></i>Appointment</a>
-                <a href="merchandise.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-shopping-cart me-2"></i>Merchandise</a>
-                <a href="schedule.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                        class="fas fa-gift me-2"></i>Schedule</a>
-                
-                <a href="logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
-                        class="fas fa-power-off me-2"></i>Logout</a>
-            </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
+	<?php
+	require '../connection/config.php';
+	session_start();
+	if (!isset($_SESSION['email'])) {
+		header("Location: index.php");
+	}
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Dashboard</h2>
-                </div>
+	$sqlUsers = "SELECT id FROM users";
+	$query_run = mysqli_query($conn, $sqlUsers);
+	$users = mysqli_num_rows($query_run);
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+	$sqlAlumni = "SELECT id FROM student";
+	$query_run = mysqli_query($conn, $sqlAlumni);
+	$alumni = mysqli_num_rows($query_run);
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i><?php echo $_SESSION['username']; ?>
-                                
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li> -->
-                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="container-fluid px-4">
-            <div class="row g-3 my-2">
-            <h3 class="fs-3 mb-3">Weekdays Schedule</h3>
+	$sqlEmail = "SELECT id FROM contact";
+	$query_run = mysqli_query($conn, $sqlEmail);
+	$email = mysqli_num_rows($query_run);
+	?>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="dashboard.php" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">Alumni Locator Dashboard</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="dashboard.php">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="users.php">
+					<i class='bx bxs-group'></i>
+					<span class="text">Users</span>
+				</a>
+			</li>
+			<li>
+				<a href="alumni students.php">
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Alumni Students</span>
+				</a>
+			</li>
 
-            <!-- START EDITING -->
-								
-            <?php
-                    if(isset($_POST['update_sched_data'])){
-                        $days = $_POST['days'];
-                        $open = $_POST['open'];
-                        $close = $_POST['close'];
-                        $query = "UPDATE schedule SET open='$open', close='$close' WHERE days='$days'";
-                        $query_run = mysqli_query($conn, $query);
-                        if($query_run){
-                            $_SESSION['status'] = "Data Updated Successfully";
-                            header("Location: schedule.php");
-                        }
-                        else{
-                            $_SESSION['status'] = "Not Updated";
-                            header("Location: schedule.php");
-                        }
-                    }
-                    ?>
-                    <?php
-                    $query = "SELECT * FROM schedule";
-                    $query_run = mysqli_query($conn, $query);
-                
-                    if(mysqli_num_rows($query_run) > 0){
+			<li>
+				<a href="email.php">
+					<i class='bx bxs-message-dots'></i>
+					<span class="text">Email</span>
+				</a>
+			</li>
+			<li>
+				<a href="appointment.php">
+					<i class='bx bxs-doughnut-chart'></i>
+					<span class="text">Appointment</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="team.php">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Team</span>
+				</a>
+			</li>
+			<li>
+				<a href="" class="logout" data-bs-toggle="modal" data-bs-target="#logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
 
-                        
-?>    <div class="row g-3 my-2">
-    
-    <?php
-    foreach($query_run as $row){
-        ?>        
-            <div class="col-sm">
-            <div class="card shadow-lg p-3 mb-3 bg-body rounded" style="text-transform:uppercase;">
-                    
-                    <h3 style="color:#f36601;"><?=$row['days'];?></h3>                    
-                    <?=$row['open'];?> - <?=$row['close'];?>
-                    <br>
-                </div>                                
-            </div>
-        <?php
-
-        }
-    }
-    
-    else {
-        ?>
-        <tr>
-            <td colspan="6">No record found</td>
-        </tr>
-        <?php
-        }
-        ?>
-        <!-- END OF EDITING -->
-    </div>
-</div>
-
-            <div class="container-fluid px-4">
-                <div class="row g-3 my-2">
-                <h3 class="fs-4 mb-3">Student records</h3>
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">73</h3>
-                                <p class="fs-5">Total User</p>
-                            </div>
-                            
-                            <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">4920</h3>
-                                <p class="fs-5">Total Alumni Students</p>
-                            </div>
-                            <i class="fas fa-graduation-cap fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    
-
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">%25</h3>
-                                <p class="fs-5">Increase</p>
-                            </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-                </div>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
 
 
 
-                <div class="row g-3 my-2">
-                <h3 class="fs-4 mb-3">Course Total Graduates</h3>
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">BSCS</h3>
-                                <p class="fs-5">465</p>
-                            </div>
-                            
-                            <i class="fas fa-user fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<!-- <input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button> -->
+				</div>
+			</form>
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
 
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">BSIS</h3>
-                                <p class="fs-5">346</p>
-                            </div>
-                            <i class="fas fa-graduation-cap fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
+			<li class="nav-item dropdown">
+				<a class="nav-link second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<img src="asset/img/avatar/<?php echo $_SESSION['avatar']; ?>" class="rounded-circle" height="30px">
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#logout">Logout</a></li>
+				</ul>
+			</li>
 
-                    <div class="col-md">
-                            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                                <div>
-                                    <h3 class="fs-2">BSIT</h3>
-                                    <p class="fs-5">675</p>
-                                </div>
-                                <i class="fas fa-equals fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                            </div>
-                        </div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<!-- <a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download'></i>
+					<span class="text">Download PDF</span>
+				</a> -->
+			</div>
+
+			<div class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check'></i>
+					<span class="text">
+						<h3><?php echo $alumni; ?></h3>
+						<p>Total Alumni</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group'></i>
+					<span class="text">
+						<h3><?php echo $users; ?></h3>
+						<p>Total Users</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle'></i>
+					<span class="text">
+						<h3><?php echo $email; ?></h3>
+						<p>Total Email</p>
+					</span>
+				</li>
+			</div>
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent users</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Email</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$query = "SELECT * FROM users ORDER BY created_at DESC LIMIT 5";
+							$query_run = mysqli_query($conn, $query);
+
+							if (mysqli_num_rows($query_run) > 0) {
+								foreach ($query_run as $row) {
+							?>
+									<tr>
+										<td>
+											<img src="../img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+											<p><?= $row['firstname']; ?> <?= $row['lastname']; ?></p>
+										</td>
+										<td>
+											<p><?= $row['email']; ?></p>
+										</td>
+										<td>
+											<p>
+												<?php
+												if ($row['job_status'] == '1') {
+												?>
+													<span class="status completed">Working</span>
+												<?php
+												} else {
+												?>
+													<span class="status pending">Searching</span>
+												<?php
+												}
+												?>
+											</p>
+										</td>
+									</tr>
+								<?php
+								}
+							} else {
+								?>
+								<tr>
+									<td colspan="6">No record found</td>
+								</tr>
+							<?php
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="order">
+					<div class="head">
+						<h3>Meet The Team</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Email</th>
+								<th>Status</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+							$query = "SELECT * FROM admins LIMIT 5";
+							$query_run = mysqli_query($conn, $query);
+
+							if (mysqli_num_rows($query_run) > 0) {
+								foreach ($query_run as $row) {
+							?>
+									<tr>
+										<td>
+											<img src="asset/img/avatar/<?= $row['avatar']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+											<p>
+												<?= $row['firstname']; ?> <?= $row['lastname']; ?>
+											</p>
+										</td>
+										<td><?= $row['email']; ?></td>
+										<td>
+											<p>
+												<?php
+												if ($row['status'] == '1') {
+												?>
+													<span class="status completed">Active</span>
+												<?php
+												} else {
+												?>
+													<span class="status pending">Inactive</span>
+												<?php
+												}
+												?>
+											</p>
+										</td>
+									</tr>
+								<?php
+								}
+							} else {
+								?>
+								<tr>
+									<td colspan="6">No record found</td>
+								</tr>
+							<?php
+							}
+							?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h6 class="modal-title fs-5" id="logoutLabel">Logout session</h6>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Do you really want to leave and logout? All the unsaved changes will be lost.</p>
+					<br>
 
 
-                        <div class="col-md">
-                            <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                                <div>
-                                    <h3 class="fs-2">BSEMC</h3>
-                                    <p class="fs-5">380</p>
-                                </div>
-                                <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                            </div>
-                        </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger btn-block mx-1" data-bs-dismiss="modal">No, Cancel</button>
+						<a href="logout.php" type="button" class="btn btn-primary btn-block mx-1">Yes, Logout</a>
+					</div>
 
 
-                </div>
-                <br>
-                <h3 class="fs-4 mb-3">E-mail received</h3>
-                <div class="container">
-                <div class="row g-3 my-2">
-                
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Request of a softcopy</h3>
-                                <p class="fs-5">380</p>
-                            </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
 
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Reqest of appointment</h3>
-                                <p class="fs-5">380</p>
-                            </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
+				</div>
 
-                    <div class="col-md">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                            <div>
-                                <h3 class="fs-2">Subscriber to portfolio</h3>
-                                <p class="fs-5">380</p>
-                            </div>
-                            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
-                        </div>
-                    </div>
-
-                    
-
-                    
-
-                </div>
+			</div>
+		</div>
+	</div>
 
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /#page-content-wrapper -->
-    </div>
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('table').DataTable();
-
-    });
-    </script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+	<script src="asset/script.js"></script>
 </body>
 
 </html>
