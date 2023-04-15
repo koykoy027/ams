@@ -24,33 +24,46 @@ if (isset($_POST['submit'])) {
     $cpassword = md5($_POST['cpassword']);
     $phone_number = $_POST['phone_number'];
 
-
-    if ($password == $cpassword) {
-        $sql = "SELECT * FROM users WHERE email='$email'";
+    $sql = "SELECT * FROM alumnis WHERE student_number='$student_number'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0) {
+        $sql = "SELECT * FROM users WHERE student_number='$student_number'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO users (lastname,firstname, email, student_number,password, phone_number)
+            // true condition
+            if ($password == $cpassword) {
+                $sql = "SELECT * FROM users WHERE email='$email'";
+                $result = mysqli_query($conn, $sql);
+                if (!$result->num_rows > 0) {
+                    $sql = "INSERT INTO users (lastname,firstname, email, student_number,password, phone_number)
 					VALUES ('$lastname','$firstname', '$email', '$student_number','$password', '$phone_number')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                echo "<script>alert('Wow! User Registration Completed.')</script>";
+                    $result = mysqli_query($conn, $sql);
+                    if ($result) {
+                        echo "<script>alert('Wow! User Registration Completed.')</script>";
 
-                $lastname = "";
-                $firstname = "";
-                $student_number = "";
-                $email = "";
-                $phone_number = "";
-                $_POST['password'] = "";
-                $_POST['cpassword'] = "";
+                        $lastname = "";
+                        $firstname = "";
+                        $student_number = "";
+                        $birthday = "";
+                        $email = "";
+                        $phone_number = "";
+                        $_POST['password'] = "";
+                        $_POST['cpassword'] = "";
+                    } else {
+                        echo "<script>alert('Woops! Something Wrong Went.')</script>";
+                    }
+                } else {
+                    echo "<script>alert('Woops! Email Already Exists.')</script>";
+                }
             } else {
-                echo "<script>alert('Woops! Something Wrong Went.')</script>";
+                echo "<script>alert('Password Not Matched.')</script>";
             }
         } else {
-            echo "<script>alert('Woops! Email Already Exists.')</script>";
+            // false condition
+            echo "<script>alert('Student number is already registered.')</script>";
         }
     } else {
-
-        echo "<script>alert('Password Not Matched.')</script>";
+        echo "<script>alert('Student number doesnt exist.')</script>";
     }
 }
 
