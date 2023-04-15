@@ -30,7 +30,7 @@ else{
         $lname= $row['lastname'];
         $email= $row['email'];
         $phone_number= $row['phone_number'];
-        $birthdate= $row['birthdate'];
+        $birthday= $row['birthday'];
         $home_address= $row['home_address'];
         $student_number= $row['student_number'];
         $course= $row['course'];
@@ -51,7 +51,7 @@ else{
         // $_SESSION['firstname'] = $row['firstname'];
         // $_SESSION['email'] = $row['email'];
         // $_SESSION['student_number'] = $row['student_number'];
-        // $_SESSION['birthdate'] = $row['birthdate'];
+        // $_SESSION['birthday'] = $row['birthday'];
     
         // $_SESSION['phone_number'] = $row['phone_number'];
         // $_SESSION['home_address'] = $row['home_address'];
@@ -194,7 +194,7 @@ else{
                     </div>
                     <div class="col-sm-9 text-secondary">
                     <!-- EMAIL -->
-                    <?php echo $birthdate; ?>
+                    <?php echo $birthday; ?>
                     </div>
                   </div>
 

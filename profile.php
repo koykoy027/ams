@@ -159,7 +159,7 @@
                       <h6 class="mb-0">Birth date</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <?php echo $_SESSION['birthdate']; ?>
+                      <?php echo $_SESSION['birthday']; ?>
                     </div>
                   </div>
 

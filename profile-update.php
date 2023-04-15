@@ -51,7 +51,7 @@ if (!isset($_SESSION['email'])){
 
         $update_studentNumber = $_POST['update_studentNumber'];
         $select_option = $_POST['update_course'];
-        $update_birthdate = $_POST['update_birthdate'];
+        $birthday = $_POST['birthday'];
         $update_phone_number = $_POST['update_phone_number'];
         $update_address = $_POST['update_address'];
         $update_year_graduate = $_POST['update_year_graduate'];
@@ -104,7 +104,7 @@ if (!isset($_SESSION['email'])){
 
 
     
-        $query = "UPDATE users SET course='$select_option', job_status = '$job_status', student_number = '$update_studentNumber', firstname='$update_firstname', lastname='$update_lastname',birthdate='$update_birthdate',current_company='$current_company', phone_number='$update_phone_number', home_address='$update_address', year_graduate='$update_year_graduate', facebook='$facebook', instagram='$instagram', personal_website='$personal_website', secondary='$secondary', primary_='$primary_', bio = '$bio', current_job='$current_job' WHERE email='$update_email'";
+        $query = "UPDATE users SET course='$select_option', job_status = '$job_status', student_number = '$update_studentNumber', firstname='$update_firstname', lastname='$update_lastname',birthday='$update_birthday',current_company='$current_company', phone_number='$update_phone_number', home_address='$update_address', year_graduate='$update_year_graduate', facebook='$facebook', instagram='$instagram', personal_website='$personal_website', secondary='$secondary', primary_='$primary_', bio = '$bio', current_job='$current_job' WHERE email='$update_email'";
         $query_run = mysqli_query($conn, $query);
 
         if($query_run){                    
@@ -121,7 +121,7 @@ if (!isset($_SESSION['email'])){
             $_SESSION['firstname'] = $row['firstname'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['student_number'] = $row['student_number'];
-            $_SESSION['birthdate'] = $row['birthdate'];
+            $_SESSION['birthday'] = $row['birthday'];
 
             $_SESSION['phone_number'] = $row['phone_number'];
             $_SESSION['home_address'] = $row['home_address'];
@@ -256,7 +256,7 @@ if (!isset($_SESSION['email'])){
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <div class="input-group">                        
-                    <input type="date" id="inputOrange"  name="update_birthdate" aria-label="First name" class="form-control" value="<?php echo $_SESSION['birthdate']; ?>" required>                    
+                    <input type="date" id="inputOrange"  name="update_birthday" aria-label="First name" class="form-control" value="<?php echo $_SESSION['birthday']; ?>" required>                    
                   </div>
                 </div>
               </div>

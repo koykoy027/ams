@@ -1,17 +1,17 @@
+<title>
+	Login - Alumni Locator Management System
+</title>
 
-
-<?php 
-  
+<?php
+require 'header.php';
 require 'connection/config.php';
 
 session_start();
 error_reporting(0);
 
-if (isset($_SESSION['email'])){
-    header("Location: profile.php");
+if (isset($_SESSION['email'])) {
+	header("Location: profile.php");
 }
-
-
 
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['firstname'] = $row['firstname'];
 		$_SESSION['email'] = $row['email'];
 		$_SESSION['student_number'] = $row['student_number'];
-		$_SESSION['birthdate'] = $row['birthdate'];
+		$_SESSION['birthday'] = $row['birthday'];
 
 		$_SESSION['phone_number'] = $row['phone_number'];
 		$_SESSION['home_address'] = $row['home_address'];
@@ -46,10 +46,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['current_company'] = $row['current_company'];
 		$_SESSION['job_status'] = $row['job_status'];
 
-		
-
 		header("Location: profile.php");
-		
 	} else {
 		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
 	}
@@ -57,43 +54,62 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="img/AMS Logo.png" type="image/x-icon">
+<body class="d-flex flex-column bg-light">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style-for-login.css">
+	<main class="flex-shrink-0">
+		<!-- Login section-->
+		<section class="py-5">
+			<div class="container px-5 my-5">
+				<div class="text-center mb-5">
+					<h1 class="fw-bolder">LOGIN TO CONTINUE</h1>
+					<p class="text-sm fw-normal text-muted mb-0">TO FULLY ACCESSED ALUMNI LOCATOR!</p>
+				</div>
+				<div class="row gx-5 justify-content-center">
+					<!-- Login card pro-->
+					<div class="col-lg-8 col-xl-6">
+						<div class="card mb-5 mb-xl-0">
+							<div class="card-body p-5">
+								<form action="" method="POST" class="login-email">
+									<div class="form-floating mb-3">
+										<input class="form-control" id="email" name="email" type="email" placeholder="Email address" required value="<?php echo $email; ?>" />
+										<label for="email">Email address</label>
+									</div>
+									<div class="form-floating mb-3">
+										<input class="form-control" id="password" name="password" type="password" placeholder="Password" value="<?php echo $_POST['password']; ?>" required />
+										<label for="password">Password</label>
+									</div>
 
-	<title>AMS | LOGIN</title>
-</head>
-<body>
+									<div class="d-grid">
+										<button name="submit" class="btn btn-primary">Sign in</button>
+										<span class="mt-3">
+											Don't have account yet?
+											<a href="register.php">Register here</a>
+										</span>
+									</div>
+								</form>
 
 
 
-	<div class="container">
-		<form action="" method="POST" class="login-email">
-			
-			
-			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
-			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>							
-			</div>
+		</section>
+	</main>
 
-			<div>
-				<small><a href="">Forgot password</a></small>
-			</div>
-			
-			<div class="input-group">
-				<button name="submit" class="btn">Login</button>
-			</div>
-			<p class="login-register-text">Don't have an account? <a href="register.php">Register Here</a>.</p>
-		</form>
-	</div>
+
+
+
+
+
+
+
+
+
+	<?php
+	require 'footer.php';
+	?>
 </body>
-</html>

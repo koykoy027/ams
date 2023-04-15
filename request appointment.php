@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 	  $student_number = $_SESSION['student_number'];
 	  $course = $_SESSION['course'];
 	  $year_graduate = $_SESSION['year_graduate'];
-	  $birthdate = $_SESSION['birthdate'];
+	  $birthday = $_SESSION['birthday'];
 	  $message = $_POST['message'];
 
 	  
@@ -54,11 +54,11 @@ if(isset($_POST['submit'])){
 			$student_number = $_SESSION['student_number'];
 			$course = $_SESSION['course'];
 			$year_graduate = $_SESSION['year_graduate'];
-			$birthdate = $_SESSION['birthdate'];
+			$birthday = $_SESSION['birthday'];
 			$message = $_POST['message'];
 	  
 	  
-			$sql = "INSERT INTO id_application (status, id_number, firstname, lastname, email, student_number, course, year_graduate, birthdate, message) VALUES ('$status', '$id_number', '$firstname', '$lastname', '$email', '$student_number', '$course', '$year_graduate', '$birthdate', '$message')";	  
+			$sql = "INSERT INTO id_application (status, id_number, firstname, lastname, email, student_number, course, year_graduate, birthday, message) VALUES ('$status', '$id_number', '$firstname', '$lastname', '$email', '$student_number', '$course', '$year_graduate', '$birthday', '$message')";	  
 			$conn->query($sql) or die ($conn->error);
 			echo '<script type="text/javascript">toastr.success("Please wait for our respond within 24hrs", "Sent Success!")</script>';
 
@@ -266,7 +266,7 @@ if(isset($_POST['submit'])){
 					<h6 class="mb-0">Birth date</h6>
 				</div>
 				<div class="col-sm-9 text-secondary">
-					<?php echo $_SESSION['birthdate']; ?>
+					<?php echo $_SESSION['birthday']; ?>
 				</div>
 			</div>
 			<hr>			

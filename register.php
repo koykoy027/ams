@@ -1,7 +1,10 @@
+<title>
+    Register - Alumni Locator Management System
+</title>
 
-
-<?php 
-
+<!-- PHP -->
+<?php
+include 'header.php';
 include 'connection/config.php';
 
 error_reporting(0);
@@ -13,95 +16,119 @@ if (isset($_SESSION['email'])) {
 }
 
 if (isset($_POST['submit'])) {
-	$lastname = $_POST['lastname'];
-	$firstname = $_POST['firstname'];
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-	$cpassword = md5($_POST['cpassword']);
-	$phone_number = $_POST['phone_number'];
+    $lastname = $_POST['lastname'];
+    $firstname = $_POST['firstname'];
+    $email = $_POST['email'];
+    $student_number = $_POST['student_number'];
+    $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);
+    $phone_number = $_POST['phone_number'];
 
 
-	if ($password == $cpassword) {
-		$sql = "SELECT * FROM users WHERE email='$email'";
-		$result = mysqli_query($conn, $sql);
-		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO users (lastname,firstname, email, password, phone_number, tertiary)
-					VALUES ('$lastname','$firstname', '$email', '$password', '$phone_number', 'University of Caloocan City')";
-			$result = mysqli_query($conn, $sql);
-			if ($result) {
-				echo "<script>alert('Wow! User Registration Completed.')</script>";
-				
-				$lastname = "";
-				$firstname = "";
-				$email = "";
-				$phone_number = "";
-				$_POST['password'] = "";
-				$_POST['cpassword'] = "";
-				
-			} else {
-				echo "<script>alert('Woops! Something Wrong Went.')</script>";
-			}
+    if ($password == $cpassword) {
+        $sql = "SELECT * FROM users WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+        if (!$result->num_rows > 0) {
+            $sql = "INSERT INTO users (lastname,firstname, email, student_number,password, phone_number)
+					VALUES ('$lastname','$firstname', '$email', '$student_number','$password', '$phone_number')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('Wow! User Registration Completed.')</script>";
 
+                $lastname = "";
+                $firstname = "";
+                $student_number = "";
+                $email = "";
+                $phone_number = "";
+                $_POST['password'] = "";
+                $_POST['cpassword'] = "";
+            } else {
+                echo "<script>alert('Woops! Something Wrong Went.')</script>";
+            }
+        } else {
+            echo "<script>alert('Woops! Email Already Exists.')</script>";
+        }
+    } else {
 
-			
-		} else {
-			echo "<script>alert('Woops! Email Already Exists.')</script>";
-		}
-		
-	} else {
-		
-		echo "<script>alert('Password Not Matched.')</script>";
-	}
+        echo "<script>alert('Password Not Matched.')</script>";
+    }
 }
 
 ?>
+<!-- END OF PHP -->
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body class="d-flex flex-column bg-light">
+    <main class="flex-shrink-0">
+        <!-- Login section-->
+        <section class="py-5">
+            <div class="container px-5 my-5">
+                <div class="text-center mb-5">
+                    <h1 class="fw-bolder">REGISTRATION</h1>
+                    <!-- <p class="text-sm fw-normal text-muted mb-0">TO FULLY ACCESSED ALUMNI LOCATOR!</p> -->
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <!-- Login card pro-->
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="card mb-5 mb-xl-0">
+                            <div class="card-body p-5">
+                                <form action="" method="POST">
+                                    <!-- Name input-->
+                                    <div class="row">
+                                        <div class="col-md">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="firstname" name="firstname" type="text" placeholder="FirstName" value="<?php echo $firstname; ?>" required />
+                                                <label for="firstname">FirstName</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="lastname" name="lastname" type="text" placeholder="LastName" value="<?php echo $lastname; ?>" required />
+                                                <label for="lastname">LastName</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Student number input-->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="student_number" name="student_number" type="text" placeholder="Student Number" value="<?php echo $student_number; ?>" required />
+                                        <label for="student_number">Student Number</label>
+                                    </div>
+                                    <!-- birthday input -->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="birthday" name="birthday" type="date" placeholder="Student Number" value="<?php echo $birthday; ?>" required />
+                                        <label for="birthday">Birthday</label>
+                                    </div>
+                                    <hr>
+                                    <!-- Email address input-->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="email" name="email" type="email" placeholder="Email Address" value="<?php echo $email; ?>" required />
+                                        <label for="email">Email address</label>
+                                    </div>
+                                    <!-- Password input -->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" value="<?php echo $password; ?>" required />
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="cpassword" name="cpassword" type="password" placeholder="Confirm Password" value="<?php echo $cpassword; ?>" required />
+                                        <label for="cpassword">Confirm Password</label>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button name="submit" class="btn btn-primary">Sign up</button>
+                                        <span class="mt-3">
+                                            Already have account yet?
+                                            <a href="login.php">Sign in here</a>
+                                        </span>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="icon" href="img/AMS Logo.png" type="image/x-icon">
-
-	<link rel="stylesheet" type="text/css" href="css/style-for-login.css">
-
-	<title>AMS | Register</title>
-</head>
-<body>
-	<div class="container">
-		<form action="" method="POST" class="login-email">			
-
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
-			<div class="input-group">
-				<input type="text" placeholder="Lastname" name="lastname" value="<?php echo $lastname; ?>" required>
-				
-				
-			</div>
-			<div class="input-group">
-				<input type="text" placeholder="Firstname" name="firstname" value="<?php echo $firstname; ?>" required>
-				
-			</div>
-			
-			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
-			</div>
-			<div class="input-group">
-				<input type="text" placeholder="Phone number" minlength="11" maxlength=11 name="phone_number" value="<?php echo $_POST['phone_number']; ?>" required>
-			</div>
-			<div class="input-group">
-				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="input-group">
-				<input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
-			</div>
-			
-			<div class="input-group">
-				<button name="submit" class="btn">Register</button>
-			</div>
-			<p class="login-register-text text-center">Have an account? <a class="text-center" href="login.php">Login Here</a>.</p>
-		</form>
-	</div>
+        </section>
+    </main>
+    <?php
+    require 'footer.php';
+    ?>
 </body>
-</html>

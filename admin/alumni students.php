@@ -168,7 +168,7 @@
                                         <td><?= $row['firstname']; ?></td>
                                         <td><?= $row['middlename']; ?></td>
                                         <td><?= $row['campus']; ?></td>
-                                        <td><?= $row['studentNumber']; ?></td>
+                                        <td><?= $row['student_number']; ?></td>
                                         <td><?= $row['gender']; ?></td>
                                         <td><?= $row['program']; ?></td>
                                         <td><?= $row['section']; ?></td>

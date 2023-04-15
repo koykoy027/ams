@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `id_application` (
   `course` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `year_graduate` int NOT NULL,
   `email` varchar(100) NOT NULL,
-  `birthdate` date NOT NULL,
+  `birthday` date NOT NULL,
   `home_address` varchar(100) NOT NULL,
   `message` varchar(500) NOT NULL,
   `date_issue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `id_application` (
 -- Dumping data for table `id_application`
 --
 
-INSERT INTO `id_application` (`id`, `status`, `id_number`, `lastname`, `firstname`, `student_number`, `course`, `year_graduate`, `email`, `birthdate`, `home_address`, `message`, `date_issue`, `expiration`) VALUES
+INSERT INTO `id_application` (`id`, `status`, `id_number`, `lastname`, `firstname`, `student_number`, `course`, `year_graduate`, `email`, `birthday`, `home_address`, `message`, `date_issue`, `expiration`) VALUES
 (43, 'done', 'UCC-000020192281', 'Villanueva', 'Joshua', '20192281', 'Bachelor of Science in Information Technology', 2015, 'joshuavillanueva@gmail.com', '2022-05-26', '', 'Hi I want to apply Alumni ID. Im graduated in last 2018.', '2022-05-27 16:54:48', '0000-00-00'),
 (44, 'done', 'UCC-000020196691', 'Labrento', 'Marc Edrien', '20196691', 'Bachelor of Science in Computer Science', 2018, 'marc@gmail.com', '1998-05-20', '', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.', '2022-05-27 16:58:21', '0000-00-00'),
 (45, 'done', 'UCC-000020190846', 'Almonia', 'Ruel', '20190846', '', 2019, 'ruel@gmail.com', '2000-05-17', '', 'Lorem ipsum may be used as a placeholder before final copy is available.', '2022-05-27 16:58:52', '0000-00-00');
@@ -1428,7 +1428,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `phone_number` double NOT NULL,
-  `birthdate` varchar(100) NOT NULL,
+  `birthday` varchar(100) NOT NULL,
   `home_address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `student_number` varchar(100) NOT NULL,
   `course` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -1454,7 +1454,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `profile_picture`, `lastname`, `firstname`, `email`, `password`, `phone_number`, `birthdate`, `home_address`, `student_number`, `course`, `year_graduate`, `facebook`, `instagram`, `personal_website`, `tertiary`, `secondary`, `primary_`, `bio`, `job_status`, `current_job`, `current_company`, `data_created`, `verification_code`, `email_verified_at`, `password_verify`) VALUES
+INSERT INTO `users` (`id`, `profile_picture`, `lastname`, `firstname`, `email`, `password`, `phone_number`, `birthday`, `home_address`, `student_number`, `course`, `year_graduate`, `facebook`, `instagram`, `personal_website`, `tertiary`, `secondary`, `primary_`, `bio`, `job_status`, `current_job`, `current_company`, `data_created`, `verification_code`, `email_verified_at`, `password_verify`) VALUES
 (10, 'placeholder.png', 'Dutong', 'John Paulo', 'ams-admin@gmail.com', '', 9789456123, '2000-09-18', 'Libertad corner F B Harison Street, UNit 1A Holiday Plaza Building beside HB, Makati City', '20184463', 'Bachelor of Science in Information Technology', 2016, 'https://www.facebook.com/paulodutong', '', '', 'University of Caloocan City', '', '', 'Graphic design, Microsoft Office, Spreadsheets', 'true', 'Video Editor', '', '2022-05-26 08:26:07', 0, NULL, ''),
 (11, 'placeholder.png', 'Dutong', 'John Paulo', 'ams-admin@gmail.com', '', 9789456234, '2000-09-18', 'Libertad corner F B Harison Street, UNit 1A Holiday Plaza Building beside HB, Makati City', '20196969', 'Bachelor of Science in Computer Science', 2016, 'https://www.facebook.com/paulodutong', '', '', 'University of Caloocan City', '', '', 'Graphic design, Microsoft Office, Spreadsheets', 'true', 'Video Editor', '', '2022-05-26 08:26:07', 0, NULL, ''),
 (12, 'placeholder.png', 'Villanueva', 'Joshua', 'joshuavillanueva@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9460070541, '2022-05-26', 'Salcedo Village, Makati City Philippines', '20192281', 'Bachelor of Science in Information Technology', 2015, 'joshua727', 'joshua727', '', 'University of Caloocan City', 'Mystical Rose School Of Caloocan', 'S.E.M.B Integrated Elementary School', 'Analytics\r\nSocial media\r\nGraphic design', 'true', 'Looking for Job', '', '2022-05-26 08:26:07', 0, NULL, ''),
