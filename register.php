@@ -118,11 +118,11 @@ if (isset($_POST['submit'])) {
                                     </div>
                                     <!-- Password input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" value="<?php echo $password; ?>" required />
+                                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" required />
                                         <label for="password">Password</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="cpassword" name="cpassword" type="password" placeholder="Confirm Password" value="<?php echo $cpassword; ?>" required />
+                                        <input class="form-control" id="cpassword" name="cpassword" type="password" placeholder="Confirm Password" required />
                                         <label for="cpassword">Confirm Password</label>
                                     </div>
                                     <div class="d-grid">
