@@ -30,9 +30,10 @@ error_reporting(0);
 				<li class="nav-item"><a class="nav-link" href="about.php">ABOUT</a></li>
 				<li class="nav-item"><a class="nav-link" href="contact.php">CONTACT</a></li>
 				<li class="nav-item"><a class="nav-link" href="faq.php">FAQ</a></li>
+				<li class="nav-item"><a class="nav-link" href="alumni connect.php">ALUMNI CONNECT</a></li>
 
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname']; ?></a>
+					<a class="nav-link dropdown-toggle text-uppercase active" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname']; ?></a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
 						<li><a class="dropdown-item" href="login.php">Profile</a></li>
 						<li><a class="dropdown-item" href="profile-update.php">Account settings</a></li>

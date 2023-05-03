@@ -13,7 +13,14 @@ if (!isset($_SESSION['email'])) {
 
 
 ?>
-<!-- END OF PHP -->
+<style>
+    header {
+        background: url('img/background image/ucc-background-blur.PNG');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
@@ -23,7 +30,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5 align-items-center justify-content-center">
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
-                            <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
+                            <h1 class="display-5 fw-bolder text-white mb-2">Welcome Alumni</h1>
                             <p class="lead fw-normal text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
