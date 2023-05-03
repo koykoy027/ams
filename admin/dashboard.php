@@ -34,7 +34,7 @@
 	$query_run = mysqli_query($conn, $sqlAlumni);
 	$alumni = mysqli_num_rows($query_run);
 
-	$sqlEmail = "SELECT id FROM contact";
+	$sqlEmail = "SELECT id FROM contacts";
 	$query_run = mysqli_query($conn, $sqlEmail);
 	$email = mysqli_num_rows($query_run);
 	?>
@@ -201,13 +201,13 @@
 										<td>
 											<p>
 												<?php
-												if ($row['job_status'] == '1') {
+												if ($row['job_status'] == 'Part Time') {
 												?>
-													<span class="status completed">Working</span>
+													<span class="status completed">Part Time</span>
 												<?php
 												} else {
 												?>
-													<span class="status pending">Searching</span>
+													<span class="status pending">Full Time</span>
 												<?php
 												}
 												?>
