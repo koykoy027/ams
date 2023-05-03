@@ -38,7 +38,7 @@ if (!isset($_SESSION['email'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="./img/about-us-profile/socialization.png" alt="..." /></div>
                 </div>
             </div>
         </header>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['email'])) {
             <div class="container px-5 my-5">
                 <div class="row gx-5">
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h2 class="fw-bolder mb-0">A better way to start building.</h2>
+                        <h2 class="fw-bolder mb-0">A better way to start trusting Alumni Locator.</h2>
                     </div>
                     <div class="col-lg-8">
                         <div class="row gx-5 row-cols-1 row-cols-md-2">
@@ -110,7 +110,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5">
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                            <img class="card-img-top" src="./img/background image/interview.png" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
                                 <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -133,8 +133,15 @@ if (!isset($_SESSION['email'])) {
                     </div>
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
+                            <img class="card-img-top" src="./img/about-us-profile/hiring.png" alt="..." />
                             <div class="card-body p-4">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+
+
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
                                 <a class="text-decoration-none link-dark stretched-link" href="#!">
                                     <h5 class="card-title mb-3">Another blog post title</h5>
@@ -156,7 +163,7 @@ if (!isset($_SESSION['email'])) {
                     </div>
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
+                            <img class="card-img-top" src="./img/background image/jobhunt.png" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
                                 <a class="text-decoration-none link-dark stretched-link" href="#!">
