@@ -7,62 +7,26 @@ if (!isset($_SESSION['email'])) {
 }
 require 'header1.php';
 
-
 if (isset($_POST['update'])) {
 
-  // echo "<pre>", print_r($_FILES['profile_picture']['name']),"</pre>";
-
-  // $profile_picture = time(). '_' . $_FILES['profile_picture']['name'];
-  // $target = 'img/user-profile/' . $profile_picture;
-
-  //personal information
-  // $profile_picture = $_POST['profile_picture'];
   $update_firstname = $_POST['update_firstname'];
   $update_lastname = $_POST['update_lastname'];
   $update_email = $_SESSION['email'];
-  // $update_password = $_POST['update_password'];
-
   $update_studentNumber = $_POST['update_studentNumber'];
   $select_option = $_POST['update_course'];
   $update_birthday = $_POST['update_birthday'];
   $update_phone_number = $_POST['update_phone_number'];
   $update_address = $_POST['update_address'];
   $update_year_graduate = $_POST['update_year_graduate'];
-
-  //social media
   $facebook = $_POST['facebook'];
   $instagram = $_POST['instagram'];
   $personal_website = $_POST['personal_website'];
-
-  //school        
-
   $secondary = $_POST['secondary'];
   $primary_ = $_POST['primary_'];
   $bio = $_POST['bio'];
   $current_job = $_POST['current_job'];
   $current_company = $_POST['current_company'];
   $job_status = $_POST['job_status'];
-
-
-  // if($_SESSION['job_status'] == 'true'){
-  //   echo 'true';
-  // }
-
-  // elseif($_SESSION['job_status'] == 'false'){
-  //   echo 'false';
-  // }
-
-  // elseif($_SESSION['job_status'] == 'searching'){
-  //   echo 'searching';
-  // }
-
-  if ($job == 1) {
-    $job_status = "false";
-  } elseif ($job == 2) {
-    $job_status = "true";
-  } elseif ($job == 3) {
-    $job_status = "searching";
-  }
 
   $query = "UPDATE users SET course='$select_option', job_status = '$job_status', student_number = '$update_studentNumber', firstname='$update_firstname', lastname='$update_lastname',birthday='$update_birthday',current_company='$current_company', phone_number='$update_phone_number', home_address='$update_address', year_graduate='$update_year_graduate', facebook='$facebook', instagram='$instagram', personal_website='$personal_website', secondary='$secondary', primary_='$primary_', bio = '$bio', current_job='$current_job' WHERE email='$update_email'";
   $query_run = mysqli_query($conn, $query);
@@ -75,7 +39,6 @@ if (isset($_POST['update'])) {
     if ($result->num_rows > 0) {
       $row = mysqli_fetch_assoc($result);
 
-      // $_SESSION['password'] = $row['password'];
       $_SESSION['profile_picture'] = $row['profile_picture'];
       $_SESSION['lastname'] = $row['lastname'];
       $_SESSION['firstname'] = $row['firstname'];
@@ -109,13 +72,7 @@ if (isset($_POST['update'])) {
     echo 'failed';
   }
 }
-
-
 ?>
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -383,10 +340,6 @@ if (isset($_POST['update'])) {
       </section>
 
       <button type="submit" name="update" class="btn btn-primary float-end">Save Changes</button>
-
-      <!-- <button class="btn btn-primary" type="submit" name="update" id="orange">Update profile</button> -->
-
-
     </form>
 
 
