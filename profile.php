@@ -215,7 +215,7 @@ if (!isset($_SESSION['email'])) {
         <div class="row gx-5">
           <div class="col-lg-3">
             <h2 class="fw-bolder">
-              Education
+              EDUCATION
             </h2>
           </div>
           <div class="col-lg">
