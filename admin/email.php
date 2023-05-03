@@ -143,6 +143,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">E-mail</th>
+                                <th scope="col">Contact number</th>
                                 <th scope="col" width="100">Date issue</th>
                                 <th scope="col">Message</th>
                             </tr>
@@ -150,7 +151,7 @@
 
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM contact";
+                            $query = "SELECT * FROM contacts";
                             $query_run = mysqli_query($conn, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
@@ -159,6 +160,7 @@
                                     <tr>
                                         <td scope="row"><?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?></td>
                                         <td scope="row"><a id="default-a" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?= $row['email']; ?>" title="<?= $row['firstname']; ?> <?= $row['lastname']; ?>" target="_blank"><?= $row['email']; ?></a></td>
+                                        <td><?php echo $row['contact_number']; ?></td>
                                         <td scope="row"><?php echo $row['created_at']; ?></td>
                                         <td scope="row"><?php echo $row['message']; ?></td>
                                     </tr>
