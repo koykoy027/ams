@@ -1,4 +1,12 @@
+<!-- NEW  -->
 
+
+
+
+<!-- END OF NEW -->
+
+
+<!-- OLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD -->
 <?php
 
   // Plaintext password entered by the user
@@ -463,12 +471,6 @@ if (!isset($_SESSION['email'])){
     </div>
   </div>
 </div>
-
-
-
-
-
-
 <?php
   require 'footer.php';
 ?>
