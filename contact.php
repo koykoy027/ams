@@ -13,6 +13,7 @@ if (!isset($_SESSION['email'])) {
     require 'header1.php';
 }
 $messageAlert = '';
+$messageAlertStyle = '';
 
 if (isset($_POST['submit'])) {
 
@@ -28,8 +29,11 @@ if (isset($_POST['submit'])) {
     // Execute the query
     if ($conn->query($sql) === TRUE) {
         $messageAlert = 'Your email has successfully sent!';
+        $messageAlertStyle = 'success';
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        header("Location: contact.php");
+        $messageAlert = 'Your email has failed!' . $sql;
+        $messageAlertStyle = 'danger';
     }
 }
 
@@ -85,7 +89,7 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <?php if (!empty($messageAlert)) : ?>
-                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                    <div class="alert alert-<?php echo $messageAlertStyle ?> alert-dismissible" role="alert">
                                         <?php echo $messageAlert; ?>
                                     </div>
                                 <?php endif; ?>
