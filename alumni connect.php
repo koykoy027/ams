@@ -16,10 +16,11 @@ if (!isset($_SESSION['email'])) {
 ?>
 <style>
 	header {
-		background: url('');
+		background: url('img/background image/alumni connect.png');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
+		color: #fff;
 	}
 </style>
 
@@ -32,7 +33,7 @@ if (!isset($_SESSION['email'])) {
 					<div class="col-lg-8 col-xxl-6">
 						<div class="text-center my-5">
 							<h1 class="fw-bolder mb-3">Alumni Connect</h1>
-							<p class="lead fw-normal text-muted mb-4">Our mission is to make Alumni easier to connect to each other.</p>
+							<p class="lead fw-normal mb-4">Our mission is to make Alumni easier to connect to each other.</p>
 							<!-- <a class="btn btn-primary btn-lg" href="#scroll-target">List of all user</a> -->
 						</div>
 					</div>
@@ -41,23 +42,23 @@ if (!isset($_SESSION['email'])) {
 		</header>
 		<!-- About section one-->
 
-		<div class="main-body">
-			<div class="container">
-				<h4 class="fw-bold fs-5">Filter</h4>
-				<form action="" method="GET">
-					<div class="row">
-						<div class="col-md">
-							<input type="submit" class="btn btn-outline-success btn-block" value="Job Searching" name="job_searching">
-							<input type="submit" class="btn btn-outline-danger btn-block" value="Seeking Employee" name="employee_searching">
-							<input type="submit" class="btn btn-outline-secondary btn-block" value="Clear Filter" name="clear">
-						</div>
 
-					</div>
-				</form>
-			</div>
-		</div>
 		<section class="py-5 bg-light" id="scroll-target">
+
 			<div class="container px-5 my-5">
+				<!-- <div class="main-body">
+					<h4 class="fw-bold fs-5">Filter</h4>
+					<form action="" method="GET">
+						<div class="row">
+							<div class="col-md">
+								<input type="submit" class="btn btn-outline-success btn-block" value="Job Searching" name="job_searching">
+								<input type="submit" class="btn btn-outline-danger btn-block" value="Seeking Employee" name="employee_searching">
+								<input type="submit" class="btn btn-outline-secondary btn-block" value="Clear Filter" name="clear">
+							</div>
+
+						</div>
+					</form>
+				</div> -->
 				<div class="row gx-5 align-items-center">
 					<div class="overflow-hidden">
 						<hr>
@@ -66,13 +67,7 @@ if (!isset($_SESSION['email'])) {
 								<tr>
 									<th>Name</th>
 									<th>Current job</th>
-									<th>Personal Skills</th>
-									<th>Contact</th>
-
-									<th>Course</th>
 									<th>Batch</th>
-									<th>Location</th>
-
 								</tr>
 							</thead>
 							<tbody style="background:none;">
@@ -138,22 +133,10 @@ if (!isset($_SESSION['email'])) {
 
 													<p class="text-muted mb-0">
 														<?= $row['current_company']; ?>
-
 													</p>
 												</div>
-
 											</td>
-
-											<td><?= $row['bio']; ?></td>
-											<td>
-												<?= $row['phone_number']; ?>
-
-											</td>
-
-
-											<td><?= $row['course']; ?></td>
 											<td><?= $row['year_graduate']; ?></td>
-											<td><?= $row['home_address']; ?></td>
 										</tr>
 									<?php
 									}
