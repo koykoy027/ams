@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2023 at 09:24 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 03, 2023 at 02:38 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE `admins` (
   `status` int(11) NOT NULL,
   `avatar` varchar(255) NOT NULL DEFAULT 'placeholder.png',
   `created_at` varchar(255) NOT NULL DEFAULT current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admins`
@@ -67,7 +67,7 @@ CREATE TABLE `alumnis` (
   `semester` varchar(50) NOT NULL,
   `batch` varchar(50) NOT NULL,
   `created_at` varchar(255) NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `alumnis`
@@ -1285,7 +1285,7 @@ CREATE TABLE `appointment` (
   `purpose` varchar(100) NOT NULL,
   `message` varchar(500) NOT NULL,
   `created_at` varchar(255) NOT NULL DEFAULT current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment`
@@ -1335,69 +1335,29 @@ INSERT INTO `appointment` (`status`, `id`, `firstname`, `lastname`, `email`, `st
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Table structure for table `contacts`
 --
 
-CREATE TABLE `contact` (
+CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,
-  `firstname` varchar(100) NOT NULL,
-  `lastname` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `message` varchar(500) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `contact_number` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` longtext NOT NULL,
   `created_at` varchar(255) NOT NULL DEFAULT current_timestamp()
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `contact`
+-- Dumping data for table `contacts`
 --
 
-INSERT INTO `contact` (`id`, `firstname`, `lastname`, `email`, `message`, `created_at`) VALUES
-(1, 'Joshua', 'Villanueva', 'villanuevajoshua27@gmail.com', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', '2022-05-13 16:53:27'),
-(2, 'Joshua', 'Villanueva', 'villanuevajoshua27@gmail.com', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', '2022-05-13 16:54:26'),
-(3, 'Joshua', 'Villanueva', 'villanuevajoshua27@gmail.com', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', '2022-05-13 16:54:31'),
-(4, 'Earl Adnrei', 'Dutong', 'dutz@gmail.com', 'For writers, a random sentence can help them get their creative juices flowing. Since the topic of the sentence is completely unknown, it forces the writer to be creative when the sentence appears. There are a number of different ways a writer can use the random sentence for creativity. The most common way to use the sentence is to begin a story.', '2022-05-13 16:55:59'),
-(5, 'Paulo', 'Dutong', 'paubalew@gmail.com', ' Another option is to include it somewhere in the story. A much more difficult challenge is to use it to end a story. In any of these cases, it forces the writer to think creatively since they have no idea what sentence will appear from the tool.', '2022-05-13 16:56:43'),
-(6, 'Jerelyn', 'Villanueva', 'jerelyn@gmail.com', 'Yung mga ganyang mag update ang nate-take for granted hahaha. A healthy balance of presence and absence is needed. Even good sunshine burns if we get too much. Hahaha', '2022-05-15 13:17:07'),
-(7, 'Sample Name', 'Sample Lastname', 'samplegmail@gmail.com', 'sample text', '2022-05-15 14:48:11'),
-(8, 'asd', 'asd', 'sad@sdas', 'asd', '2022-05-22 16:07:56'),
-(9, 'asdsa', 'saddas', 'asdsad@sadasdas.com', '', '2022-05-22 16:12:31'),
-(10, 'sdsadasdas', 'asdasdsad', 'asdasds@gmail.com', 'sadasdsadsadas', '2022-05-22 16:13:02'),
-(11, 'asdsadsad', 'zxc', 'asd@gmail.com', 'asd', '2022-05-22 16:14:03'),
-(12, 'qwe', 'zxc', 'asdgfd@gmail.com', 'asd21312312', '2022-05-22 16:14:29'),
-(13, 'qwe', 'zxc', 'asdgfd@gmail.com', 'asd21312312', '2022-05-22 16:14:36'),
-(14, 'qwe', 'zxc', 'asdgfd@gmail.com', 'asd21312312', '2022-05-22 16:15:10'),
-(15, 'asd', 'sda', 'qwe@gmail.com', 'asd', '2022-05-22 16:15:39'),
-(16, 'asd', 'sda', 'qwe@gmail.com', 'asd', '2022-05-22 16:15:44'),
-(17, 'asd', 'sda', 'qwe@gmail.com', 'asd', '2022-05-22 16:15:47'),
-(18, 'asd', 'sda', 'qwe@gmail.com', 'asd', '2022-05-22 16:16:06'),
-(19, 'asdsadsa', 'asdsadsa', 'd@gmail.com', 'asd\r\n', '2022-05-22 16:16:30'),
-(20, 'asdsadsa', 'asdsadsa', 'd@gmail.com', 'asd\r\n', '2022-05-22 16:16:35'),
-(21, 'asdsadsa', 'asdsadsa', 'd@gmail.com', 'asd\r\n', '2022-05-22 16:17:46'),
-(22, 'sadsadsa', 'asd@sda', 'sadas@dsa', 'asd', '2022-05-22 16:18:07'),
-(23, 'sadsadsa', 'asd@sda', 'sadas@dsa', 'asd', '2022-05-22 16:18:37'),
-(24, 'ivan', 'Alvarina', 'ivan@gmail.com', 'asd', '2022-05-22 16:20:26'),
-(25, 'asd', 'dsa', 'ulan@gmail.com', 'asd', '2022-05-22 16:20:59'),
-(26, 'sad', 'asd', 'asd@asd', 'asd', '2022-05-22 16:21:25'),
-(27, 'Christine', 'ewan', 'christian@gmail.com', 'asd', '2022-05-22 16:22:02'),
-(28, 'asd', 'asd', 'asd@gmail.com', 'asd', '2022-05-22 16:22:27'),
-(29, 'hekki', 'asd', 's@gmail.com', 'asd', '2022-05-22 16:22:47'),
-(30, 'hekki', 'asd', 's@gmail.com', 'asd', '2022-05-22 16:22:52'),
-(31, 'hekki', 'asd', 's@gmail.com', 'asd', '2022-05-22 16:23:35'),
-(32, 'asd', 'zxc', 'zxc@gmail.com', 'zxc', '2022-05-22 16:23:49'),
-(33, 'zxc', 'dsa', 'zxc@gmail.com', 'zxcddsawqe', '2022-05-22 16:24:07'),
-(34, 'zxc', 'dsa', 'zxc@gmail.com', 'zxcddsawqe', '2022-05-22 16:24:12'),
-(35, 'zxc', 'dsa', 'zxc@gmail.com', 'zxcddsawqe', '2022-05-22 16:24:23'),
-(36, 'xzcxz', 'zxc', 'g@gasd', 'asd', '2022-05-22 16:24:33'),
-(37, 'zxc', 'cxz', 'asd@das', 'asdzxc', '2022-05-22 16:25:11'),
-(38, 'zxc', 'cxz', 'asd@das', 'asdzxc', '2022-05-22 16:25:24'),
-(39, 'xzc', 'cxz', 'asd@dsa', 'zxc', '2022-05-22 16:26:14'),
-(40, 'xzc', 'cxz', 'asd@dsa', 'zxc', '2022-05-22 16:26:18'),
-(41, 'xzc', 'cxz', 'asd@dsa', 'zxc', '2022-05-22 16:26:26'),
-(42, 'asd', 'zxc', 'cxz2@sdxzc', 'zxc', '2022-05-23 15:52:58'),
-(43, 'zxc', 'ewq', 'asd@zxc', 'z', '2022-05-23 15:53:12'),
-(44, 'Gabbie', 'Napoto', 'gabbie@gmail.com', 'joshua727', '2022-05-23 18:44:30'),
-(45, 'Gabbie', 'Napoto', 'Gabbie@gmail.com', 'sanataama', '2022-05-23 18:44:47'),
-(46, 'sad', 'dsadsa', 'dsads@sadsa', 'asdasdzxc', '2022-05-25 18:26:13');
+INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `contact_number`, `email`, `message`, `created_at`) VALUES
+(1, 'Evan', 'Terrell', '+1 (307) 462-7225', 'zapal@mailinator.com', 'Vero sint dolor alia', '2023-05-03 20:30:38'),
+(2, 'Alika', 'Little', '+1 (352) 655-1908', 'gufiwawow@mailinator.com', 'Debitis consequatur ', '2023-05-03 20:32:41'),
+(3, 'Demetria', 'Acosta', '+1 (108) 872-1838', 'gajevixuf@mailinator.com', 'Amet ullam nisi acc', '2023-05-03 20:32:59'),
+(4, 'Evelyn', 'Ward', '+1 (649) 969-4712', 'momemire@mailinator.com', 'Checking your network cables, modem, and routers\nReconnecting to your wireless network\nRunning Windows Network Diagnostics\nDNS_PROBE_FINISHED_NO_INTERNET\nWant to play a game while you wait?', '2023-05-03 20:34:12'),
+(5, 'Merritt', 'Warner', '+1 (175) 568-2158', 'qubalymide@mailinator.com', 'Checking your network cables, modem, and routers\nReconnecting to your wireless network\nRunning Windows Network Diagnostics\nDNS_PROBE_FINISHED_NO_INTERNET\nWant to play a game while you wait?\nChecking your network cables, modem, and routers\nReconnecting to your wireless network\nRunning Windows Network Diagnostics\nDNS_PROBE_FINISHED_NO_INTERNET\nWant to play a game while you wait?', '2023-05-03 20:34:44');
 
 -- --------------------------------------------------------
 
@@ -1420,7 +1380,7 @@ CREATE TABLE `id_application` (
   `message` varchar(500) NOT NULL,
   `created_at` varchar(255) NOT NULL DEFAULT current_timestamp(),
   `expiration` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `id_application`
@@ -1429,25 +1389,7 @@ CREATE TABLE `id_application` (
 INSERT INTO `id_application` (`id`, `status`, `id_number`, `lastname`, `firstname`, `student_number`, `course`, `year_graduate`, `email`, `birthdate`, `home_address`, `message`, `created_at`, `expiration`) VALUES
 (43, 'done', 'UCC-000020192281', 'Villanueva', 'Joshua', '20192281', 'Bachelor of Science in Information Technology', 2015, 'joshuavillanueva@gmail.com', '2022-05-26', '', 'Hi I want to apply Alumni ID. Im graduated in last 2018.', '2022-05-28 00:54:48', '0000-00-00'),
 (44, 'done', 'UCC-000020196691', 'Labrento', 'Marc Edrien', '20196691', 'Bachelor of Science in Computer Science', 2018, 'marc@gmail.com', '1998-05-20', '', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.', '2022-05-28 00:58:21', '0000-00-00'),
-(45, 'done', 'UCC-000020190846', 'Almonia', 'Ruel', '20190846', '', 2019, 'ruel@gmail.com', '2000-05-17', '', 'Lorem ipsum may be used as a placeholder before final copy is available.', '2022-05-28 00:58:52', '0000-00-00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `profile`
---
-
-CREATE TABLE `profile` (
-  `id` int(11) NOT NULL,
-  `student_number` int(11) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `phone_number` varchar(255) NOT NULL,
-  `birthday` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `program` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `created_at` varchar(255) NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(45, 'done', 'UCC-000020190846', 'Almonia', 'Ruel', '20190846', 'Bachelor of Science in Computer Science', 2019, 'ruel@gmail.com', '2000-05-17', '', 'Lorem ipsum may be used as a placeholder before final copy is available.', '2022-05-28 00:58:52', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -1460,7 +1402,7 @@ CREATE TABLE `schedule` (
   `days` varchar(50) NOT NULL,
   `open` varchar(50) NOT NULL,
   `close` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `schedule`
@@ -1488,7 +1430,7 @@ CREATE TABLE `student` (
   `COURSE` varchar(11) NOT NULL,
   `YEAR_GRADUATE` varchar(255) NOT NULL,
   `SECTION` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `student`
@@ -2527,7 +2469,7 @@ CREATE TABLE `student_info` (
   `CONTACT` varchar(80) NOT NULL,
   `FINAL_GRADE` int(11) NOT NULL,
   `YEAR_GRADUATE` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `student_info`
@@ -2659,62 +2601,34 @@ CREATE TABLE `users` (
   `firstname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `phone_number` double NOT NULL,
-  `birthday` varchar(100) NOT NULL,
-  `home_address` varchar(100) NOT NULL,
-  `course` varchar(100) NOT NULL,
-  `year_graduate` int(11) NOT NULL,
-  `facebook` varchar(100) NOT NULL,
-  `instagram` varchar(100) NOT NULL,
-  `personal_website` varchar(100) NOT NULL,
-  `tertiary` varchar(250) NOT NULL,
-  `secondary` varchar(250) NOT NULL,
-  `primary_` varchar(250) NOT NULL,
-  `bio` varchar(250) NOT NULL,
-  `job_status` varchar(255) NOT NULL,
-  `current_job` varchar(100) NOT NULL,
-  `current_company` varchar(255) NOT NULL,
-  `verification_code` int(11) NOT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `birthday` date NOT NULL,
+  `home_address` varchar(100) DEFAULT NULL,
+  `course` varchar(100) DEFAULT NULL,
+  `year_graduate` varchar(255) DEFAULT NULL,
+  `facebook` varchar(100) DEFAULT NULL,
+  `instagram` varchar(100) DEFAULT NULL,
+  `personal_website` varchar(100) DEFAULT NULL,
+  `tertiary` varchar(250) DEFAULT NULL,
+  `secondary` varchar(250) DEFAULT NULL,
+  `primary_` varchar(250) DEFAULT NULL,
+  `bio` varchar(250) DEFAULT NULL,
+  `job_status` varchar(255) DEFAULT NULL,
+  `current_job` varchar(100) DEFAULT NULL,
+  `current_company` varchar(255) DEFAULT NULL,
+  `verification_code` int(11) DEFAULT NULL,
   `email_verified_at` datetime DEFAULT NULL,
-  `password_verify` varchar(255) NOT NULL,
-  `created_at` varchar(255) NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password_verify` varchar(255) DEFAULT NULL,
+  `created_at` varchar(255) DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `profile_picture`, `student_number`, `lastname`, `firstname`, `email`, `password`, `phone_number`, `birthday`, `home_address`, `course`, `year_graduate`, `facebook`, `instagram`, `personal_website`, `tertiary`, `secondary`, `primary_`, `bio`, `job_status`, `current_job`, `current_company`, `verification_code`, `email_verified_at`, `password_verify`, `created_at`) VALUES
-(10, 'placeholder.png', '20184463', 'Dutong', 'John Paulo', 'ams-admin@gmail.com', '', 9789456123, '2000-09-18', 'Libertad corner F B Harison Street, UNit 1A Holiday Plaza Building beside HB, Makati City', 'Bachelor of Science in Information Technology', 2016, 'https://www.facebook.com/paulodutong', '', '', 'University of Caloocan City', '', '', 'Graphic design, Microsoft Office, Spreadsheets', '1', 'Video Editor', '', 0, NULL, '', '2023-04-12 15:24:38'),
-(11, 'placeholder.png', '20196969', 'Dutong', 'John Paulo', 'ams-admin@gmail.com', '', 9789456234, '2000-09-18', 'Libertad corner F B Harison Street, UNit 1A Holiday Plaza Building beside HB, Makati City', 'Bachelor of Science in Computer Science', 2016, 'https://www.facebook.com/paulodutong', '', '', 'University of Caloocan City', '', '', 'Graphic design, Microsoft Office, Spreadsheets', '1', 'Video Editor', '', 0, NULL, '', '2023-04-12 15:24:38'),
-(12, 'placeholder.png', '20192281', 'Villanueva', 'Joshua', 'joshuavillanueva@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9460070541, '2022-05-26', 'Salcedo Village, Makati City Philippines', 'Bachelor of Science in Information Technology', 2015, 'joshua727', 'joshua727', '', 'University of Caloocan City', 'Mystical Rose School Of Caloocan', 'S.E.M.B Integrated Elementary School', 'Analytics\r\nSocial media\r\nGraphic design', '1', 'Looking for Job', '', 0, NULL, '', '2023-04-12 15:24:38'),
-(13, 'placeholder.png', '20212281', 'Villanueva', 'Jillian Vyel', 'vyel@gmail.com', '', 9789658967, '2021-05-23', 'Blk20 Lot 24 Daisy St. San Jose Del Monte Bulacan', 'Bachelor of Science in Information Technology', 2018, 'https://www.facebook.com/rochelle.flororita.39', 'https://www.instagram.com/pwoxll/', '', 'University of Caloocan City', '', '', 'Social media, Graphic design, Microsoft Office', '1', 'Tambay', '', 0, NULL, '', '2023-04-12 15:24:38'),
-(14, 'placeholder.png', '2019784', 'Panes panes', 'Joshua', 'boompanes@gmail.com', '', 9874458966, '', '6th Floor Trafalgar Plaza, 105 H.V. Dela Costa Street, Salcedo Village, Quezon City', 'Bachelor of Science in Computer Science', 2019, 'https://www.facebook.com/rochelle.flororita.39', '', '', 'University of Caloocan City', '', '', 'Email communication, Marketing automation, Data visualization', '1', 'Administrative III', '', 0, NULL, '', '2023-04-12 15:24:38'),
-(15, 'placeholder.png', '20191071', 'Napoto', 'Gabbie', 'gabbienapoto@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9099237895, '2001-05-24', 'PH 4, PKG 1 BLK 7 LOT 27 BAGONG SILANG', 'Bachelor of Science in Computer Science', 2015, '', '', '', 'University of Caloocan City', 'Benigno high school', 'Bagong Silang Elementary School', 'Spreadsheets, Email communication, Marketing automation', '0', 'Full Stack Developer', 'Civil Service Commission', 0, NULL, '', '2023-04-12 15:24:38'),
-(16, 'placeholder.png', '20195569', 'Jamaybay', 'Christian', 'jamaybay@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 927594850, '1997-02-22', 'Blk 36 Lot 12 La Forteza Subdivision Gate 2 Camarin Caloocan City', 'Bachelor of Science in Information System', 2019, 'profile.php?id=100009406675807', 'jamaybay', 'https://joshua-gmrc.epizy.com', 'University of Caloocan City', 'Mystical', 'Phase 1 main', 'Microsoft Office, Grammar Correction, Basic Programming Language\r\n\r\n\r\n', '1', 'Front End Programmer', 'Mystical Rose Corporation', 0, NULL, '', '2023-04-12 15:24:38'),
-(17, 'placeholder.png', '20197891', 'Dutong', 'Paulo', 'paulodutz@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9663398755, '', 'Liwag Bldg., Burgos Ave ., 3100 Cabanatuan City', 'Bachelor of Science in Computer Science', 2019, '', '', '', 'University of Caloocan City', '', '', 'Microsoft Office, Spreadsheets, Email communication', '1', 'Full Stack Developer', '', 0, NULL, '', '2023-04-12 15:24:38'),
-(18, '1653835983_Capture - Copy.PNG', '20196691', 'Labrento', 'Marc Edriane', 'marc@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9300502556, '1998-05-20', 'Air Advertisements Aviation Center Andrews Avenue Domestic Airport 1300', 'Bachelor of Science in Computer Science', 2018, 'marcedrian.labrento', 'marcedrian.labrento', '', 'University of Caloocan City', 'Bagong Silang High School', 'Bagong Silang Elementary School', 'Database, SQL, PHP, JQUERY, Bootstrap, CSS', '1', 'Back End Programmer', 'San Miguel Beer Corp.', 0, NULL, '', '2023-04-12 15:24:38'),
-(19, 'placeholder.png', '20194654', 'Villanueva', 'Paciencia', 'nanay@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9797465454, '1941-05-07', '101 Matutum Corner Mauban Streets Barangay Manreza 1115', 'Bachelor of Science in Computer Science', 1964, 'nanaygaming', 'walapa', '', 'University of Caloocan City', 'Pamantasan ng malalaking katawan sa Universidad ng Oxford Bulacan City', 'Pamantasan ng maliliit na katawan sa Universidad ng Oxford Bulacan City', 'Computer Engineer, Civil Engineer, Remove repair, Umbrella repair', '0', 'Body Builder', 'Body builder Gymnastic Inc.', 0, NULL, '', '2023-04-12 15:24:38'),
-(20, 'placeholder.png', '20190846', 'Almonia', 'Ruel', 'ruel@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9454654654, '2000-05-17', 'MRH NHA SITE 4 BUILDING 4A 1-U-11 BARANGAY 188 TALA, CALOOCAN CITY', '', 2019, 'ruel.almonia', 'ruel.almonia', '', 'University of Caloocan City', 'Dummy Secondary high school', 'Dummy Primary elementary school', 'Front End, Back end, Graphic Designer', '0', 'Head Manager', 'Kikiam Factory', 0, NULL, '', '2023-04-12 15:24:38'),
-(21, '1653836109_Capture - Copy.PNG', '20196496', 'Bocayo', 'Vicky', 'vicky@gmail.com', 'adb6db0fc132d242fb8fa6324cec1b8b', 9460070541, '1980-03-17', 'Evergreen hts. San Jose Del Monte bulacan', 'Bachelor of Science in Information technology', 2018, '', '', '', 'University of Caloocan City', 'Evergreen High school', 'Evergreen ELementary School', 'Shooting, Driving, swimming, sleeping, karate', '1', 'Security Guard', 'Civil Service Commission', 0, NULL, '', '2023-04-12 15:24:38'),
-(24, 'placeholder.png', '', 'Villanueva', 'Joshua', 'villanuevajoshua27@gmail.com', '$2y$10$hcULArEbW/YG0uKNj0zjbOieayJJutrm5j40QM9VnUcGueX6f3/by', 0, '', '', '', 0, '', '', '', '', '', '', '', '0', '', '', 184415, '2022-06-02 17:45:58', '', '2023-04-12 15:24:38'),
-(25, 'placeholder.png', '', 'Oneil', 'Adria', 'myminyf@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 1, '', '', '', 0, '', '', '', 'University of Caloocan City', '', '', '', '', '', '', 0, NULL, '', '2023-04-12 15:35:33'),
-(26, 'placeholder.png', '', 'Rowe', 'Berk', 'dowoceby@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 1, '', '', '', 0, '', '', '', 'University of Caloocan City', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 14:19:04'),
-(27, 'placeholder.png', '', 'Woods', 'Bruno', 'punahupu@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 1, '', '', '', 0, '', '', '', 'University of Caloocan City', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 14:27:01'),
-(28, 'placeholder.png', '', 'Fletcher', 'Samson', 'gahicihy@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 1, '', '', '', 0, '', '', '', 'University of Caloocan City', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 14:42:27'),
-(29, 'placeholder.png', '', 'Stuart', 'Lester', 'pifarati@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', 'University of Caloocan City', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 14:53:07'),
-(30, 'placeholder.png', '', 'Hancock', 'Cameron', 'cyxicycu@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', 'University of Caloocan City', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 14:58:08'),
-(31, 'placeholder.png', '', 'Lamb', 'Kyle', 'gurabotyhi@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:01:10'),
-(32, 'placeholder.png', '319', 'Kelley', 'Anastasia', 'xaki@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:03:47'),
-(33, 'placeholder.png', '955', 'Cabrera', 'Dora', 'xuhalic@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:17:19'),
-(34, 'placeholder.png', '20184463', 'Schultz', 'Madeson', 'dogu@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:32:41'),
-(35, 'placeholder.png', '856', 'Vargas', 'Karen', 'jije@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:45:24'),
-(36, 'placeholder.png', '503', 'Yates', 'Cameron', 'vixi@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:45:30'),
-(37, 'placeholder.png', '460', 'Cline', 'Kelsie', 'joxewudun@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:50:59'),
-(38, 'placeholder.png', '20171005', 'Hodge', 'Bertha', 'raryxe@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 15:51:42'),
-(39, 'placeholder.png', '20170211', 'Schneider', 'Lydia', 'wageti@mailinator.com', '7815696ecbf1c96e6894b779456d330e', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 16:01:34'),
-(40, 'placeholder.png', '20181263', 'Bartlett', 'Lucian', 'wijuhasim@mailinator.com', 'a8f5f167f44f4964e6c998dee827110c', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 16:02:22'),
-(41, 'placeholder.png', '20181287', 'Porter', 'Anastasia', 'example@gmail.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', 0, '', '', '', 0, '', '', '', '', '', '', '', '', '', '', 0, NULL, '', '2023-04-15 16:28:14');
+(1, 'placeholder.png', '20171005', 'Turner', 'Sade', 'piporenoci@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', '', '2005-06-11', '28-Feb-2015', 'Bachelor of Science in Computer Science', '2010-04', 'https://www.facebook.com/huhypa', 'https://www.instagram.com/huhypa', 'https://www.huhypa.net', NULL, 'Blanditiis a mollit ', 'Magna enim recusanda', 'Chat with us Chat live with one of our support specialists.', 'Part Time', '', 'Cannon and Morgan Inc', NULL, NULL, NULL, '2023-05-03 20:18:32'),
+(2, 'placeholder.png', '20180063', 'Hall', 'Xenos', 'raryxe@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', '', '1979-07-25', 'Quezon City', 'Bachelor of Science in Entertainment and Multimedia Computing', '2004-04', 'https://www.facebook.comnaqejiky.us', 'https://www.instagram.com/naqejiky.us', 'https://www.naqejiky.us', NULL, NULL, NULL, 'Designed and built with all the love in the world by the Bootstrap team with the help of our contributors.\r\nCode licensed MIT, docs CC BY 3.0 Sed eos placeat nu', 'Part Time', 'Et quo error omnis o', 'Ramos and Gill Co', NULL, NULL, NULL, '2023-05-03 20:21:37');
 
 --
 -- Indexes for dumped tables
@@ -2739,21 +2653,15 @@ ALTER TABLE `appointment`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contact`
+-- Indexes for table `contacts`
 --
-ALTER TABLE `contact`
+ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `id_application`
 --
 ALTER TABLE `id_application`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `profile`
---
-ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2803,22 +2711,16 @@ ALTER TABLE `appointment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
 
 --
--- AUTO_INCREMENT for table `contact`
+-- AUTO_INCREMENT for table `contacts`
 --
-ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `id_application`
 --
 ALTER TABLE `id_application`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
---
--- AUTO_INCREMENT for table `profile`
---
-ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -2836,7 +2738,7 @@ ALTER TABLE `student_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

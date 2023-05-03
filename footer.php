@@ -7,9 +7,9 @@
 			<div class="col-auto">
 				<a class="link-light small" href="#!">Privacy</a>
 				<span class="text-white mx-1">&middot;</span>
-				<a class="link-light small" href="#!">Terms</a>
+				<a class="link-light small" href="terms.php">Terms</a>
 				<span class="text-white mx-1">&middot;</span>
-				<a class="link-light small" href="#!">Contact</a>
+				<a class="link-light small" href="contact.php">Contact</a>
 			</div>
 		</div>
 	</div>
