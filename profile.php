@@ -38,6 +38,9 @@ if (!isset($_SESSION['email'])) {
             <p class="lead fw-normal text-muted mb-0">
               <?php echo $_SESSION['bio']; ?>
             </p>
+            <a href="profile-update.php" class="btn btn-primary btn-sm mt-4">
+              <i class="bi bi-pencil-square"></i> Edit Profile
+            </a>
           </div>
         </div>
       </div>
