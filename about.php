@@ -38,8 +38,8 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="./img/about-us-profile/standout.png" alt="..." /></div>
                     <div class="col-lg-6">
-                        <h2 class="fw-bolder">Our founding</h2>
-                        <p class="lead fw-normal text-muted mb-0">Our team of developers and designers is working on creating an Alumni Locator Management System that will benefit not only the University of Caloocan City but also other institutions. The system aims to help these institutions maintain a strong connection with their alumni network by providing a comprehensive platform that offers networking opportunities, career development resources, and reliable communication channels. We are committed to developing a scalable and customizable system that meets the unique needs of each institution. </p>
+                        <h2 class="fw-bolder">Mission</h2>
+                        <p class="lead fw-normal text-muted mb-0">To provide quality and relevant education responsive to the needs of the community and to produce graduates who are globally competitive, morally upright, and socially responsible. </p>
                     </div>
                 </div>
             </div>
@@ -50,8 +50,8 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="./img/background image/alumniconnecting.png" alt="..." /></div>
                     <div class="col-lg-6">
-                        <h2 class="fw-bolder">Growth &amp; beyond</h2>
-                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                        <h2 class="fw-bolder">Vision</h2>
+                        <p class="lead fw-normal text-muted mb-0">The University of Caloocan City is a premier university in the Asia-Pacific region recognized for its excellence in instruction, research, and community engagement towards sustainable development. It shall produce graduates who are creative, innovative, and globally competitive, with a strong commitment to ethical and civic values.</p>
                     </div>
                 </div>
             </div>

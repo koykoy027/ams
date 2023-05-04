@@ -31,10 +31,17 @@ if (!isset($_SESSION['email'])) {
                     <div class="col-lg-8 col-xl-7 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
                             <h1 class="display-5 fw-bolder text-white mb-2">Welcome Alumni</h1>
-                            <p class="lead fw-normal text-white mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+                            <p class="lead fw-normal text-white mb-4">By gathering and displaying alumni ratings and testimonials on your website, you can help build trust with prospective students and demonstrate the value of your institution's education and programs.
+
+
+
+
+
+
+                            </p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="about.php">Learn More</a>
+                                <!-- <a class="btn btn-outline-light btn-lg px-4" href="about.php">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -53,23 +60,24 @@ if (!isset($_SESSION['email'])) {
                         <div class="row gx-5 row-cols-1 row-cols-md-2">
                             <div class="col mb-5 h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                <h2 class="h5">Featured title</h2>
-                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                <h3 class="card-title">Online Admission System</h3>
+                                <p class="card-text">Software system for automomate the process of student admission in Universitites, Colleges & Schools. Web based application has the ability to calculate based on reservation of seats as per Govt regulations, set up criterias, generate the selection list / merit list in a single click, payment gateway integration etc.</p>
+
                             </div>
                             <div class="col mb-5 h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                <h2 class="h5">Featured title</h2>
-                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                <h3 class="card-title">Alumni Management System</h3>
+                                <p class="card-text">Online application software acts as a interactive medium between the old student and the Schools, Colleges, Universities or institutions. Android apps for Alumni Management System comes preloaded with useful features & scopes. Alumni data can be centralized and combined to use it in any future endeavours.</p>
                             </div>
                             <div class="col mb-5 mb-md-0 h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                <h2 class="h5">Featured title</h2>
-                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                <h3 class="card-title">Online Newsletter</h3>
+                                <p class="card-text">Web Based system for personalized promotional HTML email newsletters to prospective buyers / clients. The mails can be templated or customized. The system can track campaigns or individual mails whether they have been received at the intended mail boxes, opened or have been bounced etc and empowered with cron jobs.</p>
                             </div>
                             <div class="col h-100">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                <h2 class="h5">Featured title</h2>
-                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                <h3 class="card-title">School College ERP System</h3>
+                                <p class="card-text">ERP is a component wise combined software system to automate schools, colleges or universities. Software modules can be added on for fees collections, online admission, staff attendance, library management, students promotion and online education support, id card generation or online examination systems.</p>
                             </div>
                         </div>
                     </div>
@@ -82,13 +90,13 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-10 col-xl-7">
                         <div class="text-center">
-                            <div class="fs-4 mb-4 fst-italic">"Working with Start Bootstrap templates has saved me tons of development time when building new projects! Starting with a Bootstrap template just makes things easier!"</div>
+                            <div class="fs-4 mb-4 fst-italic">"An alumni locator management system is a software tool that helps educational institutions or organizations keep track of their alumni and their current locations. These systems often use data such as alumni contact information, social media profiles, and professional networks to create a comprehensive database of alumni."</div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                                 <div class="fw-bold">
-                                    Tom Ato
+                                    ALMS
                                     <span class="fw-bold text-primary mx-1">/</span>
-                                    CEO, Pomodoro
+                                    Alumni Locator Management System
                                 </div>
                             </div>
                         </div>
@@ -103,7 +111,7 @@ if (!isset($_SESSION['email'])) {
                     <div class="col-lg-8 col-xl-6">
                         <div class="text-center">
                             <h2 class="fw-bolder">From our blog</h2>
-                            <p class="lead fw-normal text-muted mb-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque fugit ratione dicta mollitia. Officiis ad.</p>
+                            <p class="lead fw-normal text-muted mb-5">Graduway is a cloud-based alumni engagement and career services platform that allows educational institutions to build and maintain relationships with their alumni. The platform includes features such as a searchable alumni directory, event management tools, and career services support.</p>
                         </div>
                     </div>
                 </div>
