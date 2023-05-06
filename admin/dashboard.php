@@ -71,9 +71,9 @@
 				</a>
 			</li>
 			<li>
-				<a href="appointment.php">
+				<a href="event.php">
 					<i class='bx bxs-doughnut-chart'></i>
-					<span class="text">Appointment</span>
+					<span class="text">Event Posts</span>
 				</a>
 			</li>
 		</ul>

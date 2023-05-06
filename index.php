@@ -104,96 +104,74 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <div class="text-center">
-                            <h2 class="fw-bolder">From our blog</h2>
-                            <p class="lead fw-normal text-muted mb-5">Graduway is a cloud-based alumni engagement and career services platform that allows educational institutions to build and maintain relationships with their alumni. The platform includes features such as a searchable alumni directory, event management tools, and career services support.</p>
+                            <h2 class="fw-bolder">Event Posting</h2>
+                            <p class="lead fw-normal text-muted mb-5">
+                                An alumni management system's event posting feature allows for efficient and organized communication with former students regarding upcoming events and activities.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="row gx-5">
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="assets/img/background image/interview.png" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">Blog post title</h5>
-                                </a>
-                                <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">Kelly Rowan</div>
-                                            <div class="text-muted">March 12, 2023 &middot; 6 min read</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="assets/img/about-us-profile/hiring.png" alt="..." />
-                            <div class="card-body p-4">
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+                    <?php
+                    require 'connection/config.php';
+                    $query = "SELECT * FROM events WHERE status = 1 ORDER BY created_at DESC LIMIT 3";
+
+                    $query_run = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        foreach ($query_run as $row) {
+                    ?>
 
 
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">Another blog post title</h5>
-                                </a>
-                                <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">Josiah Barclay</div>
-                                            <div class="text-muted">March 23, 2023 &middot; 4 min read</div>
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="assets/img/events/<?= $row['image']; ?>" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">
+                                            <?= $row['type']; ?>
+                                        </div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                            <h5 class="card-title mb-3">
+                                                <?= $row['title']; ?>
+                                            </h5>
+                                        </a>
+                                        <p class="card-text mb-0">
+                                            <?= $row['description']; ?>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                        <div class="d-flex align-items-end justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <!-- <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                                <div class="small">
+                                                    <div class="fw-bold">Kelly Rowan</div> -->
+                                                <div class="text-muted">
+                                                    <?= $row['created_at']; ?>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="assets/img/background image/jobhunt.png" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">The last blog post title is a little bit longer than the others</h5>
-                                </a>
-                                <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">Evelyn Martinez</div>
-                                            <div class="text-muted">April 2, 2023 &middot; 10 min read</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+            <?php
+                        }
+                    } else {
+            ?>
+            <p class="text-center fw-bold">
+                No post yet
+            </p>
+        <?php
+                    }
+        ?>
 
-                <div class="d-flex justify-content-end">
-                    <a class="text-decoration-none" href="#!">
-                        View all
-                        <i class="bi-arrow-right"></i>
-                    </a>
-                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <a class="text-decoration-none" href="#!">
+                    View all
+                    <i class="bi-arrow-right"></i>
+                </a>
+            </div>
             </div>
         </section>
     </main>

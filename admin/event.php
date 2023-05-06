@@ -15,7 +15,7 @@
     <!-- My CSS -->
 
     <link rel="icon" type="png" href="asset/img/branding.png" />
-    <title>Alumni Locator Management System - Email</title>
+    <title>Alumni Locator Management System - Event Posts</title>
 </head>
 
 <body>
@@ -52,13 +52,13 @@
                 </a>
             </li>
 
-            <li class="active">
+            <li>
                 <a href="email.php">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">Email</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="event.php">
                     <i class='bx bxs-doughnut-chart'></i>
                     <span class="text">Event Posts</span>
@@ -116,14 +116,14 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Email received</h1>
+                    <h1>Event Posts</h1>
                     <ul class="breadcrumb">
                         <li>
                             <a href="">Dashboard</a>
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
-                            <a class="active" href="#">Email</a>
+                            <a class="active" href="#">Event posts</a>
                         </li>
                     </ul>
                 </div>
@@ -136,33 +136,38 @@
             <div class="table-data row m-auto mt-4">
                 <div class="">
                     <div class="head">
-                        <h3>Inbox</h3>
+                        <h3>Posts</h3>
                     </div>
                     <table class="table table-borderless align-middle table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">E-mail</th>
-                                <th scope="col">Contact number</th>
-                                <th scope="col" width="100">Date issue</th>
-                                <th scope="col">Message</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Where</th>
+                                <th scope="col">When</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM contacts";
+                            $query = "SELECT * FROM events";
                             $query_run = mysqli_query($conn, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
                                 foreach ($query_run as $row) {
                             ?>
                                     <tr>
-                                        <td scope="row"><?php echo $row['firstname']; ?> <?php echo $row['lastname']; ?></td>
-                                        <td scope="row"><a id="default-a" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?= $row['email']; ?>" title="<?= $row['firstname']; ?> <?= $row['lastname']; ?>" target="_blank"><?= $row['email']; ?></a></td>
-                                        <td><?php echo $row['contact_number']; ?></td>
-                                        <td scope="row"><?php echo $row['created_at']; ?></td>
-                                        <td scope="row"><?php echo $row['message']; ?></td>
+                                        <td scope="row">
+                                            <?php echo $row['title']; ?>
+                                        </td>
+
+                                        <td><?php echo $row['where_at']; ?></td>
+                                        <td scope="row"><?php echo $row['when_at']; ?></td>
+                                        <td scope="row">
+                                            <span class="status completed">
+                                                <?php echo $row['status']; ?>
+                                            </span>
+                                        </td>
                                     </tr>
                                 <?php
                                 }
