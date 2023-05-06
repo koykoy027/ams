@@ -15,7 +15,7 @@ if (!isset($_SESSION['email'])) {
 ?>
 <style>
     header {
-        background: url('img/background image/ucc-background-blur.PNG');
+        background: url('assets/img/background image/ucc-background-blur.PNG');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -39,7 +39,7 @@ if (!isset($_SESSION['email'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="./img/about-us-profile/socialization.png" alt="..." /></div>
+                    <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="assets/img/about-us-profile/socialization.png" alt="..." /></div>
                 </div>
             </div>
         </header>
@@ -112,7 +112,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5">
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="./img/background image/interview.png" alt="..." />
+                            <img class="card-img-top" src="assets/img/background image/interview.png" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
                                 <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -135,7 +135,7 @@ if (!isset($_SESSION['email'])) {
                     </div>
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="./img/about-us-profile/hiring.png" alt="..." />
+                            <img class="card-img-top" src="assets/img/about-us-profile/hiring.png" alt="..." />
                             <div class="card-body p-4">
                                 <br>
                                 <br>
@@ -165,7 +165,7 @@ if (!isset($_SESSION['email'])) {
                     </div>
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="./img/background image/jobhunt.png" alt="..." />
+                            <img class="card-img-top" src="assets/img/background image/jobhunt.png" alt="..." />
                             <div class="card-body p-4">
                                 <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
                                 <a class="text-decoration-none link-dark stretched-link" href="#!">

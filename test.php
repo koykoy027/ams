@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 
     $profile_picture = time() . '_' . $_FILES['profile_picture']['name'];
 
-    $target = 'img/user-profile/' . $profile_picture;
+    $target = 'assets/img/user-profile/' . $profile_picture;
 
     if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $target)) {
         // need
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 
 
 <form action="" method="post" enctype="multipart/form-data">
-    <img src="img/user-profile/<?php echo $_SESSION['profile_picture']; ?>" alt="<?php echo $_SESSION['profile_picture']; ?>" class="img-fluid rounded mb-5 mb-lg-0" width="250" id="img">
+    <img src="assets/img/user-profile/<?php echo $_SESSION['profile_picture']; ?>" alt="<?php echo $_SESSION['profile_picture']; ?>" class="img-fluid rounded mb-5 mb-lg-0" width="250" id="img">
 
     <div class="input-group">
         <input type="file" class="form-control pd-5" name="profile_picture" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">

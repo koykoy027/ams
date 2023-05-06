@@ -16,7 +16,7 @@ if (!isset($_SESSION['email'])) {
 ?>
 <style>
 	header {
-		background: url('img/background image/alumni connect.png');
+		background: url('assets/img/background image/alumni connect.png');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -96,8 +96,7 @@ if (!isset($_SESSION['email'])) {
 
 												<div class="d-flex align-items-center">
 													<a title="Visit: <?= $row['firstname']; ?> <?= $row['lastname']; ?>" id="default-a" target="_blank" href='visit profile.php?id=<?php echo $row['id'] ?>'>
-														<!-- <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width:45px; height:45px;" class="rounded-circle"> -->
-														<img src="img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+														<img src="assets/img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
 													</a>
 
 													<div class="ms-3">

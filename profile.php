@@ -29,7 +29,7 @@ if (!isset($_SESSION['email'])) {
       <div class="container px-5 my-5">
         <div class="row gx-5 align-items-center">
           <div class="col-lg-3">
-            <img name="profile_picture" src="img/user-profile/<?php echo $_SESSION['profile_picture']; ?>" alt="<?php echo $_SESSION['profile_picture']; ?>" class="img-fluid rounded mb-5 mb-lg-0" width="250">
+            <img name="profile_picture" src="assets/img/user-profile/<?php echo $_SESSION['profile_picture']; ?>" alt="<?php echo $_SESSION['profile_picture']; ?>" class="img-fluid rounded mb-5 mb-lg-0" width="250">
           </div>
           <div class="col-lg">
             <h2 class="fw-bolder">
@@ -275,7 +275,7 @@ if (!isset($_SESSION['email'])) {
               <div class="d-flex flex-column align-items-center text-center">
                 <a href="logout.php" class="btn btn-primary btn-md" style="margin-left:80%;">Logout</a>
 
-                <img name="profile_picture" src="img/user-profile/<?php echo $_SESSION['profile_picture']; ?>" alt="<?php echo $_SESSION['profile_picture']; ?>" class="rounded-circle" width="150">
+                <img name="profile_picture" src="assets/img/user-profile/<?php echo $_SESSION['profile_picture']; ?>" alt="<?php echo $_SESSION['profile_picture']; ?>" class="rounded-circle" width="150">
 
                 <div class="mt-3">
                   <?php
