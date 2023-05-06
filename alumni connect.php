@@ -62,99 +62,69 @@ if (!isset($_SESSION['email'])) {
 				<div class="row gx-5 align-items-center">
 					<div class="overflow-hidden">
 						<hr>
-						<table class="table table-borderless align-middle table-hover">
-							<thead style="background:none;">
-								<tr>
-									<th>Name</th>
-									<th>Current job</th>
-									<th>Batch</th>
-								</tr>
-							</thead>
-							<tbody style="background:none;">
 
-								<?php
+						<?php
+						if (isset($_GET['job_searching'])) {
+							$query = "SELECT * FROM users WHERE job_status ='true' ORDER BY firstname ASC";
+						} elseif (isset($_GET['employee_searching'])) {
+							$query = "SELECT * FROM users WHERE job_status ='searching' ORDER BY firstname ASC";
+						} elseif (isset($_GET['clear'])) {
+							$query = "SELECT * FROM users ORDER BY firstname ASC";
+						} else {
+							$query = "SELECT * FROM users ORDER BY firstname ASC";
+						}
+						$query_run = mysqli_query($conn, $query);
 
-								if (isset($_GET['job_searching'])) {
-									$query = "SELECT * FROM users WHERE job_status ='true' ORDER BY firstname ASC";
-								} elseif (isset($_GET['employee_searching'])) {
-									$query = "SELECT * FROM users WHERE job_status ='searching' ORDER BY firstname ASC";
-								} elseif (isset($_GET['clear'])) {
-									$query = "SELECT * FROM users ORDER BY firstname ASC";
-								} else {
-									$query = "SELECT * FROM users ORDER BY firstname ASC";
-								}
+						if (mysqli_num_rows($query_run) > 0) {
 
+							foreach ($query_run as $row) {
+						?>
 
-								$query_run = mysqli_query($conn, $query);
-
-								if (mysqli_num_rows($query_run) > 0) {
-
-									foreach ($query_run as $row) {
-								?>
-										<tr>
-											<td>
-
-												<div class="d-flex align-items-center">
-													<a title="Visit: <?= $row['firstname']; ?> <?= $row['lastname']; ?>" id="default-a" target="_blank" href='visit profile.php?id=<?php echo $row['id'] ?>'>
-														<img src="assets/img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+								<div class="card mb-3">
+									<div class="card-body">
+										<div class="d-flex justify-content-between">
+											<div class="d-flex gap-4">
+												<img src="assets/img/user-profile/placeholder.png" width="100px" class="rounded-circle">
+												<div>
+													<h5>
+														<?= $row['firstname']; ?> <?= $row['lastname']; ?>
+													</h5>
+													<a class="text-muted text-decoration-none">
+														<?= $row['email']; ?>
 													</a>
-
-													<div class="ms-3">
-														<a title="Visit: <?= $row['firstname']; ?> <?= $row['lastname']; ?>" id="default-a" target="_blank" href='visit profile.php?id=<?php echo $row['id'] ?>'>
-															<p class="fw-bold mb-1">
-
-																<!-- <i class="fa-solid fa-circle" title="Looking for job" style="color:green;font-size: xx-small;"></i> -->
-																<?= $row['firstname']; ?> <?= $row['lastname']; ?>
-
-																<?php
-																if ($row['job_status'] == 'searching') {
-																	echo '<i class="fa-solid fa-circle" title="Looking for Emplyoee" style="color:red;font-size: xx-small;"></i>';
-																} elseif ($row['job_status'] == 'true') {
-																	echo '<i class="fa-solid fa-circle" title="Looking for a new job" style="color:green;font-size: xx-small;"></i>';
-																}
-																?>
-															</p>
-
-														</a>
-														<a class="text-muted mb-0" id="default-a" href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=<?= $row['email']; ?>" title="<?= $row['firstname']; ?> <?= $row['lastname']; ?>" target="_blank">
-															<?= $row['email']; ?>
-
-														</a>
-													</div>
+													<br>
+													<small>
+														<?= $row['bio']; ?>
+													</small>
 												</div>
-											</td>
-											<td>
-												<div class="ms-0">
-													<p class="fw-bold mb-1">
+											</div>
 
-														<?= $row['current_job']; ?>
-													</p>
+											<div class="dropdown text-sm">
+												<button class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+													:
+												</button>
+												<ul class="dropdown-menu">
+													<li><a class="dropdown-item text-sm" href='visit profile.php?id=<?php echo $row['id'] ?>'>Visit Profile</a></li>
+												</ul>
+											</div>
 
-													<p class="text-muted mb-0">
-														<?= $row['current_company']; ?>
-													</p>
-												</div>
-											</td>
-											<td><?= $row['year_graduate']; ?></td>
-										</tr>
-									<?php
-									}
-								} else {
-									?>
-									<tr>
-										<td colspan="6">No record found</td>
-									</tr>
-								<?php
-								}
-								?>
-							</tbody>
-						</table>
+										</div>
+									</div>
+								</div>
+
+							<?php
+							}
+						} else {
+							?>
+							<p class="text-center">
+								No records found
+							</p>
+						<?php
+						}
+						?>
+
 						<hr>
-
 					</div>
-
-
-					<!--  -->
 				</div>
 			</div>
 		</section>

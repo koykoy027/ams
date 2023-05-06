@@ -369,7 +369,7 @@ if (isset($_POST['update'])) {
                 <h6 class="mb-0">Bio</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                <textarea style="height: 150px" id="inputOrange" name="bio" class="form-control" placeholder="Tell about yourself" id="floatingTextarea" required><?php echo $_SESSION['bio'] ?></textarea>
+                <textarea style="height: 150px" id="inputOrange" name="bio" class="form-control" placeholder="Tell about yourself" id="floatingTextarea" maxlength="250" required><?php echo $_SESSION['bio'] ?></textarea>
               </div>
             </div>
             <hr>
