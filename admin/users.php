@@ -160,7 +160,7 @@
                                         <td width="200">
                                             <div class="d-flex gap-4">
 
-                                                <img src="../img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+                                                <img src="../assets/img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
                                                 <p class="fw-bold mb-1">
                                                     <?= $row['firstname']; ?> <?= $row['lastname']; ?>
                                                     <br>
@@ -186,13 +186,13 @@
                                                 <p>
 
                                                     <?php
-                                                    if ($row['job_status'] == '1') {
+                                                    if ($row['job_status'] == 'Full Time') {
                                                     ?>
-                                                        <span class="status completed">Working</span>
+                                                        <span class="status completed">Full Time</span>
                                                     <?php
                                                     } else {
                                                     ?>
-                                                        <span class="status pending">Searching</span>
+                                                        <span class="status pending">Part Time</span>
                                                     <?php
                                                     }
 
