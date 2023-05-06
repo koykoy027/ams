@@ -32,12 +32,6 @@ if (!isset($_SESSION['email'])) {
                         <div class="my-5 text-center text-xl-start">
                             <h1 class="display-5 fw-bolder text-white mb-2">Welcome Alumni</h1>
                             <p class="lead fw-normal text-white mb-4">By gathering and displaying alumni ratings and testimonials on your website, you can help build trust with prospective students and demonstrate the value of your institution's education and programs.
-
-
-
-
-
-
                             </p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>

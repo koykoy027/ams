@@ -108,7 +108,7 @@ if (!isset($_SESSION['email'])) {
                                         <p class="text-muted mb-4">
                                             Contact us at
                                             <br />
-                                            <a href="#!">support@domain.com</a>
+                                            <a href="#!">alumni-support@gmail.com</a>
                                         </p>
                                         <div class="h6 fw-bolder">Follow us</div>
                                         <a class="fs-5 px-2 link-dark" href="#!"><i class="bi-twitter"></i></a>
