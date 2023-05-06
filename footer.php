@@ -5,8 +5,6 @@
 				<div class="small m-0 text-white">Copyright &copy; Alumni Locator 2023</div>
 			</div>
 			<div class="col-auto">
-				<a class="link-light small" href="#!">Privacy</a>
-				<span class="text-white mx-1">&middot;</span>
 				<a class="link-light small" href="terms.php">Terms</a>
 				<span class="text-white mx-1">&middot;</span>
 				<a class="link-light small" href="contact.php">Contact</a>
