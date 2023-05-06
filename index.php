@@ -187,6 +187,13 @@ if (!isset($_SESSION['email'])) {
                         </div>
                     </div>
                 </div>
+
+                <div class="d-flex justify-content-end">
+                    <a class="text-decoration-none" href="#!">
+                        View all
+                        <i class="bi-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
