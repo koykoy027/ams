@@ -142,8 +142,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Title</th>
-                                <th scope="col">Where</th>
-                                <th scope="col">When</th>
+
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
@@ -161,12 +160,40 @@
                                             <?php echo $row['title']; ?>
                                         </td>
 
-                                        <td><?php echo $row['where_at']; ?></td>
-                                        <td scope="row"><?php echo $row['when_at']; ?></td>
-                                        <td scope="row">
-                                            <span class="status completed">
+                                        <td class=" d-flex justify-content-between">
+                                            <?php
+                                            if ($row['status'] == '1') {
+                                            ?>
+                                                <span class="status completed">Active</span>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <span class="status pending">Archieve</span>
+                                            <?php
+                                            }
+                                            ?>
+
+                                            <!-- <span class="status completed">
                                                 <?php echo $row['status']; ?>
-                                            </span>
+                                            </span> -->
+
+                                            <li class="nav-item dropdown">
+                                                <a class=" second-text fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class='bx bx-dots-vertical-rounded'></i>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <!-- <li>
+                                                        <form>
+                                                            <a class="dropdown-item" href='../event-post.php?id=<?php echo $row['id'] ?>' target="_blank">View post</a>
+                                                        </form>
+
+                                                    </li> -->
+
+                                                    <li>
+                                                        <a class="dropdown-item" href='../event-post.php?id=<?php echo $row['id'] ?>' target="_blank">View post</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                         </td>
                                     </tr>
                                 <?php

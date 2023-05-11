@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
-        $picture = $row['image'];
+        $image = $row['image'];
         $title = $row['title'];
         $type = $row['type'];
         $description = $row['description'];
@@ -64,7 +64,7 @@ if (isset($_GET['id'])) {
                                 <a class="badge bg-secondary text-decoration-none link-light" href="#!"><?php echo $type; ?></a>
                             </header>
                             <!-- Preview image figure-->
-                            <figure class="mb-4"><img class="img-fluid rounded" src="assets/img/events/placeholder.png" alt="..." width="50%" /></figure>
+                            <figure class="mb-4"><img class="img-fluid rounded" src="assets/img/events/<?php echo $image; ?>" alt="..." width="50%" /></figure>
                             <!-- Post content-->
                             <section class="mb-5">
                                 <div class="row">
