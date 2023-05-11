@@ -13,17 +13,10 @@ session_start();
 if (isset($_SESSION['email'])) {
     header("Location: login.php");
 }
-$messageRegister = '';
-$messageRegisterAlert = '';
+$message = '';
+$messageAlert = '';
 
-$messageSomething = '';
-$messageSomethingAlert = '';
 
-$messagePassword = '';
-$messagePasswordAlert = '';
-
-$messageStudentNumber = '';
-$messageStudentNumberAlert = '';
 
 
 if (isset($_POST['submit'])) {
@@ -51,8 +44,8 @@ if (isset($_POST['submit'])) {
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
                         // echo "<script>alert('Wow! User Registration Completed.')</script>";
-                        $messageRegister = 'Congratulations! Your registration is successful.';
-                        $messageRegisterAlert = 'success';
+                        $message = 'Congratulations! Your registration is successful.';
+                        $messageAlert = 'success';
 
                         $lastname = "";
                         $firstname = "";
@@ -64,29 +57,29 @@ if (isset($_POST['submit'])) {
                         $_POST['cpassword'] = "";
                     } else {
                         // echo "<script>alert('Woops! Something Wrong Went.')</script>";
-                        $messageRegister = 'Sorry, your registration was not successful. Please try again later.';
-                        $messageRegisterAlert = 'danger';
+                        $message = 'Sorry, your registration was not successful. Please try again later.';
+                        $messageAlert = 'danger';
                     }
                 } else {
                     // echo "<script>alert('Woops! Email Already Exists.')</script>";
-                    $messageRegister = 'Woops! Email Already Exists.';
-                    $messageRegisterAlert = 'danger';
+                    $message = 'Woops! Email Already Exists.';
+                    $messageAlert = 'danger';
                 }
             } else {
                 // echo "<script>alert('Password Not Matched.')</script>";
-                $messagePassword = 'Woops! Password Not Matched.';
-                $messagePasswordAlert = 'danger';
+                $message = 'Woops! Password Not Matched.';
+                $messageAlert = 'danger';
             }
         } else {
             // false condition
             // echo "<script>alert('Student number is already registered.')</script>";
-            $messageStudentNumber = 'Student number is already registered.';
-            $messageStudentNumberAlert = 'danger';
+            $message = 'Student number is already registered.';
+            $messageAlert = 'danger';
         }
     } else {
         // echo "<script>alert('Student number doesnt exist.')</script>";
-        $messageStudentNumber = 'Student number doesnt exist.';
-        $messageStudentNumberAlert = 'danger';
+        $message = 'Student number doesnt exist.';
+        $messageAlert = 'danger';
     }
 }
 
@@ -110,34 +103,12 @@ if (isset($_POST['submit'])) {
                                 <form action="" method="POST">
                                     <!-- Name input-->
                                     <div class="row mb-1">
-                                        <?php if (!empty($messageRegister)) : ?>
-                                            <div class="alert alert-<?php echo $messageRegisterAlert; ?> alert-dismissible" role="alert">
-                                                <?php echo $messageRegister; ?>
+                                        <?php if (!empty($message)) : ?>
+                                            <div class="alert alert-<?php echo $messageAlert; ?> alert-dismissible" role="alert">
+                                                <?php echo $message; ?>
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="row mb-1">
-                                        <?php if (!empty($messageSomething)) : ?>
-                                            <div class="alert alert-<?php echo $messageSomethingAlert; ?> alert-dismissible" role="alert">
-                                                <?php echo $messageSomething; ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="row mb-1">
-                                        <?php if (!empty($messagePassword)) : ?>
-                                            <div class="alert alert-<?php echo $messagePasswordAlert; ?> alert-dismissible" role="alert">
-                                                <?php echo $messagePassword; ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="row mb-1">
-                                        <?php if (!empty($messageStudentNumber)) : ?>
-                                            <div class="alert alert-<?php echo $messageStudentNumberAlert; ?> alert-dismissible" role="alert">
-                                                <?php echo $messageStudentNumber; ?>
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-
 
                                     <div class="row">
                                         <div class="col-md">
