@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 02:38 PM
+-- Generation Time: May 11, 2023 at 08:13 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -1362,6 +1362,38 @@ INSERT INTO `contacts` (`id`, `firstname`, `lastname`, `contact_number`, `email`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `where_at` varchar(255) NOT NULL,
+  `when_at` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `image`, `title`, `type`, `description`, `where_at`, `when_at`, `status`, `created_at`) VALUES
+(1, '1683827447_orientation-text-written-over-colorful-background-orange-purple-blue-squares-triangles-floral-253811901.jpg', 'Orientation For Gradwaiting!', 'Orientation Week', 'We are excited to announce that Orientation Week will be taking place from 05/26/2023 to 05/26/2023. ! This is a great opportunity for you to get to know your fellow students, familiarize yourself with the campus, and learn about the resources available to you.\r\nDear students,\r\n\r\nWe are excited to announce that Orientation Week will be taking place from Congressional Campus! This is a great opportunity for you to get to know your fellow students, familiarize yourself with the campus, and learn about the resources available to you.\r\n\r\nDuring Orientation Week, you will have the chance to participate in a variety of activities and events, including campus tours, meet-and-greets with faculty and staff, information sessions about academic programs, and social events.', 'University of Caloocan city - Congressional Campus', '2023-05-26', '0', '2023-05-11 17:50:47'),
+(2, '1683827548_download.jpg', 'Officia alias deseru', 'Homecoming', 'We encourage all new students to attend as many events as possible to help you make a smooth transition into university life. Returning students are also welcome to attend and lend their support to our new students.', 'University of Caloocan City - Camarin Campus', '2023-09-25', '1', '2023-05-11 17:52:28'),
+(3, '1683827649_download.png', 'Juan for All!', 'Career Fair', 'A career fair (also known as a job fair or career expo) is a recruiting event in which employers and recruiters meet with potential employees and where job seekers find more about job openings at potential employers.', 'Sapiente voluptates ', '2020-07-05', '1', '2023-05-11 17:54:09'),
+(4, '1683827687_download (1).jpg', 'Iste quia velit cul', 'Cultural Festivals', 'Cultural festivals in Japan are annual open day events held by most schools, from nursery schools to universities at which their students display their artistic achievements. People who want to enter the school themselves or who are interested in the school may come to see what the schoolwork and atmosphere are like', 'Commodi provident q', '1990-11-07', '1', '2023-05-11 17:54:47'),
+(5, '1683827732_iStock-540095978.jpg', 'Et natus id enim am', 'Charity Events', 'Any event whose primary purpose is to generate funds for a cause, charity, or non-profit is considered a charity event. Thus, the purpose is raising money.', 'Error ut explicabo ', '1973-07-06', '1', '2023-05-11 17:55:32'),
+(6, '1683827789_iStock-540095978.jpg', 'Et natus id enim am', 'Charity Events', 'Any event whose primary purpose is to generate funds for a cause, charity, or non-profit is considered a charity event. Thus, the purpose is raising money.', 'Error ut explicabo ', '1973-07-06', '1', '2023-05-11 17:56:29'),
+(7, '1683827924_academy-celebrate-celebration-267885-1-1024x683.jpg', 'Dolore et assumenda ', 'Graduation Ceremony', 'Graduation is the awarding of a diploma to a student by an educational institution. It may also refer to the ceremony that is associated with it. The date of the graduation ceremony is often called graduation day. The graduation ceremony is also sometimes called: commencement, congregation, convocation or invocation', 'Accusamus qui quod e', '2000-02-22', '1', '2023-05-11 17:58:44'),
+(8, '1683828134_download.jpg', 'Veritatis et rerum n', 'Student Government Elections', 'Id in reiciendis in ', 'Dolorem laborum et e', '2003-08-05', '1', '2023-05-11 18:02:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `id_application`
 --
 
@@ -2612,7 +2644,7 @@ CREATE TABLE `users` (
   `tertiary` varchar(250) DEFAULT NULL,
   `secondary` varchar(250) DEFAULT NULL,
   `primary_` varchar(250) DEFAULT NULL,
-  `bio` varchar(250) DEFAULT NULL,
+  `bio` longtext DEFAULT NULL,
   `job_status` varchar(255) DEFAULT NULL,
   `current_job` varchar(100) DEFAULT NULL,
   `current_company` varchar(255) DEFAULT NULL,
@@ -2627,7 +2659,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `profile_picture`, `student_number`, `lastname`, `firstname`, `email`, `password`, `phone_number`, `birthday`, `home_address`, `course`, `year_graduate`, `facebook`, `instagram`, `personal_website`, `tertiary`, `secondary`, `primary_`, `bio`, `job_status`, `current_job`, `current_company`, `verification_code`, `email_verified_at`, `password_verify`, `created_at`) VALUES
-(1, 'placeholder.png', '20171005', 'Turner', 'Sade', 'piporenoci@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', '', '2005-06-11', '28-Feb-2015', 'Bachelor of Science in Computer Science', '2010-04', 'https://www.facebook.com/huhypa', 'https://www.instagram.com/huhypa', 'https://www.huhypa.net', NULL, 'Blanditiis a mollit ', 'Magna enim recusanda', 'Chat with us Chat live with one of our support specialists.', 'Part Time', '', 'Cannon and Morgan Inc', NULL, NULL, NULL, '2023-05-03 20:18:32'),
+(1, 'placeholder.png', '20171005', 'Turner', 'Sade', 'piporenoci@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', '', '2005-06-11', '28-Feb-2015', 'Bachelor of Science in Computer Science', '2010-04', 'https://www.facebook.com/huhypa', 'https://www.instagram.com/huhypa', 'https://www.huhypa.net', NULL, 'Blanditiis a mollit ', 'Magna enim recusanda', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab dolorum ducimus consequuntur tempora consequatur ea eveniet sapiente sequi numquam consectetur quaerat, nihil error fugiat voluptatem doloremque fugit laborum minima sit iure hic similique ', 'Part Time', '', 'Cannon and Morgan Inc', NULL, NULL, NULL, '2023-05-03 20:18:32'),
 (2, 'placeholder.png', '20180063', 'Hall', 'Xenos', 'raryxe@mailinator.com', 'f3ed11bbdb94fd9ebdefbaf646ab94d3', '', '1979-07-25', 'Quezon City', 'Bachelor of Science in Entertainment and Multimedia Computing', '2004-04', 'https://www.facebook.comnaqejiky.us', 'https://www.instagram.com/naqejiky.us', 'https://www.naqejiky.us', NULL, NULL, NULL, 'Designed and built with all the love in the world by the Bootstrap team with the help of our contributors.\r\nCode licensed MIT, docs CC BY 3.0 Sed eos placeat nu', 'Part Time', 'Et quo error omnis o', 'Ramos and Gill Co', NULL, NULL, NULL, '2023-05-03 20:21:37');
 
 --
@@ -2656,6 +2688,12 @@ ALTER TABLE `appointment`
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2715,6 +2753,12 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `id_application`
