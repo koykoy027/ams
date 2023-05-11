@@ -33,14 +33,14 @@ if (!isset($_SESSION['email'])) {
 					<table class="table table-borderless align-middle table-hover">
 						<thead>
 							<tr>
-								<th>Lastname</th>
-								<th>Firstname</th>
+								<th>Alumni</th>
+								<!-- <th>Firstname</th>
 								<th>Middlename</th>
 								<th>Campus</th>
 								<th>Gender</th>
 								<th>Program</th>
 								<th>Section</th>
-								<th>Status</th>
+								<th>Status</th> -->
 								<th>Batch</th>
 							</tr>
 						</thead>
@@ -54,16 +54,18 @@ if (!isset($_SESSION['email'])) {
 							if (mysqli_num_rows($query_run) > 0) {
 								foreach ($query_run as $row) {
 							?>
-									<tr>
-										<td><?= $row['lastname']; ?></td>
-										<td><?= $row['firstname']; ?></td>
-										<td><?= $row['middlename']; ?></td>
-										<td><?= $row['campus']; ?></td>
+									<tr class="">
+										<td>
+											<?= $row['lastname']; ?> <?= $row['firstname']; ?> <?= $row['middlename']; ?>
+										</td>
+										<td><?= $row['batch']; ?></td>
+
+										<!-- <td><?= $row['campus']; ?></td>
 										<td><?= $row['gender']; ?></td>
 										<td><?= $row['program']; ?></td>
 										<td><?= $row['section']; ?></td>
-										<td><?= $row['status']; ?></td>
-										<td><?= $row['batch']; ?></td>
+										<td><?= $row['status']; ?></td> -->
+
 									</tr>
 								<?php
 								}
