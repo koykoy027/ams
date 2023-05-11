@@ -120,9 +120,6 @@ if (!isset($_SESSION['email'])) {
                     if (mysqli_num_rows($query_run) > 0) {
                         foreach ($query_run as $row) {
                     ?>
-
-
-
                             <div class="col-md-3 mb-5">
                                 <div class="card h-100 shadow border-0">
                                     <img class="card-img-top" src="assets/img/events/<?= $row['image']; ?>" alt="..." />

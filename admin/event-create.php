@@ -15,7 +15,7 @@
     <!-- My CSS -->
 
     <link rel="icon" type="png" href="asset/img/branding.png" />
-    <title>Alumni Locator Management System - Event Posts</title>
+    <title>Alumni Locator Management System - Event Posts Create</title>
 </head>
 
 <body>
@@ -24,6 +24,38 @@
     session_start();
     if (!isset($_SESSION['email'])) {
         header("Location: index.php");
+    }
+    $messageAlert = "";
+    $messageAlertStyle = "";
+
+    $email = $_SESSION['email'];
+    if (isset($_POST['submit'])) {
+
+        // this is for image
+        $image = time() . '_' . $_FILES['image']['name'];
+        $target = '../assets/img/events/' . $image;
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+            // this is for others information
+            // $image = $_POST['image'];
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $type = $_POST['type'];
+            $where_at = $_POST['where_at'];
+            $when_at = $_POST['when_at'];
+            $status = '1';
+
+            $sql = "INSERT INTO events (image, title, description, type, where_at, when_at, status) VALUES ('$image' ,'$title', '$description', '$type', '$where_at', '$when_at', '$status')";
+
+            // Execute the query
+            if ($conn->query($sql) === TRUE) {
+                $messageAlert = 'Congratulations! Your post has been successfully submitted. Thank you for sharing your thoughts with us. We appreciate your contribution to our community.';
+                $messageAlertStyle = 'success';
+            } else {
+                // header("Location: contact.php");
+                $messageAlert = 'Sorry, your post was not able to be submitted. Please check your internet connection and try again later.' . $sql;
+                $messageAlertStyle = 'danger';
+            }
+        }
     }
     ?>
     <!-- SIDEBAR -->
@@ -123,66 +155,100 @@
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
-                            <a class="active" href="#">Event posts</a>
+                            <a class="event.php" href="#">Event posts</a>
+                        </li>
+                        <li>
+                            <a class="active" href="#">Create</a>
                         </li>
                     </ul>
                 </div>
-                <a href="event-create.php" class="btn-download">
-                    <i class='bx bx-plus'></i>
-                    <span class="text">Add Post</span>
+                <a href="event.php" class="btn-download">
+                    <i class='bx bx-left-arrow'></i>
+                    <span class="text">Go Back</span>
                 </a>
             </div>
 
             <div class="table-data row m-auto mt-4">
                 <div class="">
                     <div class="head">
-                        <h3>Posts</h3>
+                        <h3>Create Posts</h3>
                     </div>
-                    <table class="table table-borderless align-middle table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">Where</th>
-                                <th scope="col">When</th>
-                                <th scope="col">Status</th>
-                            </tr>
-                        </thead>
+                    <div class="container">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="row mb-3">
+                                <?php if (!empty($messageAlert)) : ?>
+                                    <div class="alert alert-<?php echo $messageAlertStyle ?> alert-dismissible" role="alert">
+                                        <?php echo $messageAlert; ?>
+                                    </div>
+                                <?php endif; ?>
 
-                        <tbody>
-                            <?php
-                            $query = "SELECT * FROM events";
-                            $query_run = mysqli_query($conn, $query);
+                            </div>
 
-                            if (mysqli_num_rows($query_run) > 0) {
-                                foreach ($query_run as $row) {
-                            ?>
-                                    <tr>
-                                        <td scope="row">
-                                            <?php echo $row['title']; ?>
-                                        </td>
+                            <div class="row mb-3">
+                                <div class="col-md">
+                                    <img class="img-thumbnail" width="250" id="image" />
+                                    <input type="file" class="form-control" id="inputGroupFile04" name="image" required>
+                                </div>
+                                <script>
+                                    let image = document.getElementById('image');
+                                    let input = document.getElementById('inputGroupFile04');
 
-                                        <td><?php echo $row['where_at']; ?></td>
-                                        <td scope="row"><?php echo $row['when_at']; ?></td>
-                                        <td scope="row">
-                                            <span class="status completed">
-                                                <?php echo $row['status']; ?>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            } else {
-                                ?>
-                                <tr>
-                                    <td colspan="6">No record found</td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                                    input.onchange = (e) => {
+                                        if (input.files[0])
+                                            image.src = URL.createObjectURL(input.files[0]);
+                                    }
+                                </script>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md">
+                                    <label for="title">Title</label>
+                                    <input id="title" name="title" type="text" class="form-control" placeholder="Title" required />
+                                </div>
+                                <div class="col-md">
+                                    <label for="type">Type</label>
+                                    <select name="type" id="type" class="form-control" required>
+                                        <option value="Orientation Week">Orientation Week</option>
+                                        <option value="Homecoming">Homecoming</option>
+                                        <option value="Career Fair">Career Fair</option>
+                                        <option value="Cultural Festivals">Cultural Festivals</option>
+                                        <option value="Charity Events">Charity Events</option>
+                                        <option value="Student Government Elections">Student Government Elections</option>
+                                        <option value="Graduation Ceremony">Graduation Ceremony</option>
+                                        <option value="Guest Speakers">Guest Speakers</option>
+                                        <option value="Athletic Events">Athletic Events</option>
+                                        <option value="Academic Conferences">Academic Conferences</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md">
+                                    <label for="where_at">Where</label>
+                                    <input id="where_at" name="where_at" type="text" class="form-control" placeholder="Location or venue" required />
+                                </div>
+                                <div class="col-md">
+                                    <label for="when_at">When</label>
+                                    <input id="when_at" name="when_at" type="date" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md">
+                                    <label for="description">Description</label>
+                                    <textarea id="description" class="form-control" name="description" cols="30" rows="10" placeholder="Your announcements" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-primary" name="submit" type="submit">Create post</button>
+                            </div>
+
+
+                        </form>
+
+
+                    </div>
                 </div>
-            </div>
 
         </main>
         <!-- MAIN -->
