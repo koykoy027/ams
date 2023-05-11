@@ -13,6 +13,9 @@ if (isset($_SESSION['email'])) {
 	header("Location: profile.php");
 }
 
+$message = '';
+$messageAlert = '';
+
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -46,9 +49,12 @@ if (isset($_POST['submit'])) {
 		$_SESSION['current_company'] = $row['current_company'];
 		$_SESSION['job_status'] = $row['job_status'];
 
+		$message = 'Congratulations! You have successfully logged in to your account. Welcome back!';
+		$messageAlert = 'success';
 		header("Location: profile.php");
 	} else {
-		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+		$message = "Were sorry, but we couldnt log you in. Please check your email and password, and try again.";
+		$messageAlert = 'danger';
 	}
 }
 
@@ -70,6 +76,14 @@ if (isset($_POST['submit'])) {
 						<div class="card mb-5 mb-xl-0">
 							<div class="card-body p-5">
 								<form action="" method="POST" class="login-email">
+									<div class="row mb-3">
+										<?php if (!empty($message)) : ?>
+											<div class="alert alert-<?php echo $messageAlert; ?> alert-dismissible" role="alert">
+												<?php echo $message; ?>
+											</div>
+										<?php endif; ?>
+
+									</div>
 									<div class="form-floating mb-3">
 										<input class="form-control" id="email" name="email" type="email" placeholder="Email address" required value="<?php echo $email; ?>" />
 										<label for="email">Email address</label>
@@ -87,11 +101,6 @@ if (isset($_POST['submit'])) {
 										</span>
 									</div>
 								</form>
-
-
-
-
-
 							</div>
 						</div>
 					</div>
