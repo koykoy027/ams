@@ -192,7 +192,7 @@
 							?>
 									<tr>
 										<td>
-											<img src="../img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
+											<img src="../assets/img/user-profile/<?= $row['profile_picture']; ?>" style="width:45px; height:45px;" class="rounded-circle">
 											<p><?= $row['firstname']; ?> <?= $row['lastname']; ?></p>
 										</td>
 										<td>
