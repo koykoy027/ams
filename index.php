@@ -130,7 +130,7 @@ if (!isset($_SESSION['email'])) {
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">
                                             <?= $row['type']; ?>
                                         </div>
-                                        <a class="text-decoration-none link-dark stretched-link" href="visit profile.php?id=<?php echo $row['id'] ?>">
+                                        <a class="text-decoration-none link-dark stretched-link" href="event-post.php?id=<?php echo $row['id'] ?>">
                                             <h5 class=" card-title mb-3">
                                                 <?= $row['title']; ?>
                                             </h5>
@@ -162,20 +162,10 @@ if (!isset($_SESSION['email'])) {
                     }
 
                     ?>
-
-
-
-
-
-
                 </div>
 
-
-
-
-
                 <div class="d-flex justify-content-end">
-                    <a class="text-decoration-none" href="#!">
+                    <a class="text-decoration-none" href="events.php">
                         View all
                         <i class="bi-arrow-right"></i>
                     </a>

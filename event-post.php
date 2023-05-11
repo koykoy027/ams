@@ -5,12 +5,32 @@
 <!-- PHP -->
 <?php
 session_start();
+require 'connection/config.php';
 if (!isset($_SESSION['email'])) {
     require 'header.php';
 } else {
     require 'header1.php';
 }
+if (isset($_GET['id'])) {
 
+    $id_name = $_GET['id'];
+
+
+
+    $sql = "SELECT * FROM events WHERE id='$id_name'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $picture = $row['image'];
+        $title = $row['title'];
+        $type = $row['type'];
+        $description = $row['description'];
+        $where_at = $row['where_at'];
+        $when_at = $row['when_at'];
+        $status = $row['status'];
+        $created_at = $row['created_at'];
+    }
+}
 ?>
 
 <body class="d-flex flex-column">
@@ -21,13 +41,13 @@ if (!isset($_SESSION['email'])) {
             <div class="container px-5 my-5">
                 <div class="row gx-5">
                     <div class="col-lg-3">
-                        <div class="d-flex align-items-center mt-lg-5 mb-4">
+                        <!-- <div class="d-flex align-items-center mt-lg-5 mb-4">
                             <img class="img-fluid rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
                             <div class="ms-3">
                                 <div class="fw-bold">Valerie Luna</div>
                                 <div class="text-muted">News, Business</div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-9">
                         <!-- Post content-->
@@ -35,67 +55,43 @@ if (!isset($_SESSION['email'])) {
                             <!-- Post header-->
                             <header class="mb-4">
                                 <!-- Post title-->
-                                <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+                                <h1 class="fw-bolder mb-1">
+                                    <?php echo $title; ?>
+                                </h1>
                                 <!-- Post meta content-->
-                                <div class="text-muted fst-italic mb-2">January 1, 2023</div>
+                                <div class="text-muted fst-italic mb-2"><?php echo $created_at; ?></div>
                                 <!-- Post categories-->
-                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                                <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                                <a class="badge bg-secondary text-decoration-none link-light" href="#!"><?php echo $type; ?></a>
                             </header>
                             <!-- Preview image figure-->
-                            <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                            <figure class="mb-4"><img class="img-fluid rounded" src="assets/img/events/placeholder.png" alt="..." width="50%" /></figure>
                             <!-- Post content-->
                             <section class="mb-5">
-                                <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                                <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                                <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                                <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-                                <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                                <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
-                            </section>
-                        </article>
-                        <!-- Comments section-->
-                        <section>
-                            <div class="card bg-light">
-                                <div class="card-body">
-                                    <!-- Comment form-->
-                                    <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-                                    <!-- Comment with nested comments-->
-                                    <div class="d-flex mb-4">
-                                        <!-- Parent comment-->
-                                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                        <div class="ms-3">
-                                            <div class="fw-bold">Commenter Name</div>
-                                            If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                            <!-- Child comment 1-->
-                                            <div class="d-flex mt-4">
-                                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                                <div class="ms-3">
-                                                    <div class="fw-bold">Commenter Name</div>
-                                                    And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                                </div>
-                                            </div>
-                                            <!-- Child comment 2-->
-                                            <div class="d-flex mt-4">
-                                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                                <div class="ms-3">
-                                                    <div class="fw-bold">Commenter Name</div>
-                                                    When you put money directly to a problem, it makes a good headline.
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md">
+                                        <p class="fs-5 fw-bold">
+                                            When
+                                        </p>
+                                        <p class="fs-5 mb-4">
+                                            <?php echo $when_at; ?>
+                                        </p>
                                     </div>
-                                    <!-- Single comment-->
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                        <div class="ms-3">
-                                            <div class="fw-bold">Commenter Name</div>
-                                            When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
-                                        </div>
+                                    <div class="col-md">
+                                        <p class="fs-5 fw-bold">
+                                            Where
+                                        </p>
+                                        <p class="fs-5 mb-4">
+                                            <?php echo $where_at; ?>
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                                <p class="fs-5 mb-4">
+                                    <?php echo $description; ?>
+                                </p>
+
+                            </section>
+                        </article>
+
                     </div>
                 </div>
             </div>
