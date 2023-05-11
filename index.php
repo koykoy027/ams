@@ -100,7 +100,7 @@ if (!isset($_SESSION['email'])) {
         </div>
         <!-- Blog preview section-->
         <section class="py-5">
-            <div class="container px-5 my-5">
+            <div class="container-fluid px-5 my-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-lg-8 col-xl-6">
                         <div class="text-center">
@@ -114,7 +114,7 @@ if (!isset($_SESSION['email'])) {
                 <div class="row gx-5">
                     <?php
                     require 'connection/config.php';
-                    $query = "SELECT * FROM events WHERE status = 1 ORDER BY created_at DESC LIMIT 3";
+                    $query = "SELECT * FROM events WHERE status = 1 ORDER BY created_at DESC LIMIT 4";
 
                     $query_run = mysqli_query($conn, $query);
                     if (mysqli_num_rows($query_run) > 0) {
@@ -122,15 +122,16 @@ if (!isset($_SESSION['email'])) {
                     ?>
 
 
-                            <div class="col-lg-4 mb-5">
+
+                            <div class="col-md-3 mb-5">
                                 <div class="card h-100 shadow border-0">
                                     <img class="card-img-top" src="assets/img/events/<?= $row['image']; ?>" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">
                                             <?= $row['type']; ?>
                                         </div>
-                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">
+                                        <a class="text-decoration-none link-dark stretched-link" href="visit profile.php?id=<?php echo $row['id'] ?>">
+                                            <h5 class=" card-title mb-3">
                                                 <?= $row['title']; ?>
                                             </h5>
                                         </a>
@@ -151,27 +152,34 @@ if (!isset($_SESSION['email'])) {
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                </div>
-            <?php
+
+                    <?php
                         }
                     } else {
-            ?>
-            <p class="text-center fw-bold">
-                No post yet
-            </p>
-        <?php
+                        echo "<h3 class='text-center'>No post yet</h3>";
                     }
-        ?>
 
-            </div>
+                    ?>
 
-            <div class="d-flex justify-content-end">
-                <a class="text-decoration-none" href="#!">
-                    View all
-                    <i class="bi-arrow-right"></i>
-                </a>
-            </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="d-flex justify-content-end">
+                    <a class="text-decoration-none" href="#!">
+                        View all
+                        <i class="bi-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
