@@ -8,12 +8,23 @@ include 'header.php';
 include 'connection/config.php';
 
 error_reporting(0);
-
 session_start();
 
 if (isset($_SESSION['email'])) {
     header("Location: login.php");
 }
+$messageRegister = '';
+$messageRegisterAlert = '';
+
+$messageSomething = '';
+$messageSomethingAlert = '';
+
+$messagePassword = '';
+$messagePasswordAlert = '';
+
+$messageStudentNumber = '';
+$messageStudentNumberAlert = '';
+
 
 if (isset($_POST['submit'])) {
     $lastname = $_POST['lastname'];
@@ -39,7 +50,9 @@ if (isset($_POST['submit'])) {
 					VALUES ('$lastname','$firstname', '$email', '$student_number','$password', '$phone_number')";
                     $result = mysqli_query($conn, $sql);
                     if ($result) {
-                        echo "<script>alert('Wow! User Registration Completed.')</script>";
+                        // echo "<script>alert('Wow! User Registration Completed.')</script>";
+                        $messageRegister = 'Congratulations! Your registration is successful.';
+                        $messageRegisterAlert = 'success';
 
                         $lastname = "";
                         $firstname = "";
@@ -50,20 +63,30 @@ if (isset($_POST['submit'])) {
                         $_POST['password'] = "";
                         $_POST['cpassword'] = "";
                     } else {
-                        echo "<script>alert('Woops! Something Wrong Went.')</script>";
+                        // echo "<script>alert('Woops! Something Wrong Went.')</script>";
+                        $messageRegister = 'Sorry, your registration was not successful. Please try again later.';
+                        $messageRegisterAlert = 'danger';
                     }
                 } else {
-                    echo "<script>alert('Woops! Email Already Exists.')</script>";
+                    // echo "<script>alert('Woops! Email Already Exists.')</script>";
+                    $messageRegister = 'Woops! Email Already Exists.';
+                    $messageRegisterAlert = 'danger';
                 }
             } else {
-                echo "<script>alert('Password Not Matched.')</script>";
+                // echo "<script>alert('Password Not Matched.')</script>";
+                $messagePassword = 'Woops! Password Not Matched.';
+                $messagePasswordAlert = 'danger';
             }
         } else {
             // false condition
-            echo "<script>alert('Student number is already registered.')</script>";
+            // echo "<script>alert('Student number is already registered.')</script>";
+            $messageStudentNumber = 'Student number is already registered.';
+            $messageStudentNumberAlert = 'danger';
         }
     } else {
-        echo "<script>alert('Student number doesnt exist.')</script>";
+        // echo "<script>alert('Student number doesnt exist.')</script>";
+        $messageStudentNumber = 'Student number doesnt exist.';
+        $messageStudentNumberAlert = 'danger';
     }
 }
 
@@ -86,6 +109,36 @@ if (isset($_POST['submit'])) {
                             <div class="card-body p-5">
                                 <form action="" method="POST">
                                     <!-- Name input-->
+                                    <div class="row mb-1">
+                                        <?php if (!empty($messageRegister)) : ?>
+                                            <div class="alert alert-<?php echo $messageRegisterAlert; ?> alert-dismissible" role="alert">
+                                                <?php echo $messageRegister; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <?php if (!empty($messageSomething)) : ?>
+                                            <div class="alert alert-<?php echo $messageSomethingAlert; ?> alert-dismissible" role="alert">
+                                                <?php echo $messageSomething; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <?php if (!empty($messagePassword)) : ?>
+                                            <div class="alert alert-<?php echo $messagePasswordAlert; ?> alert-dismissible" role="alert">
+                                                <?php echo $messagePassword; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <?php if (!empty($messageStudentNumber)) : ?>
+                                            <div class="alert alert-<?php echo $messageStudentNumberAlert; ?> alert-dismissible" role="alert">
+                                                <?php echo $messageStudentNumber; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+
+
                                     <div class="row">
                                         <div class="col-md">
                                             <div class="form-floating mb-3">
@@ -105,6 +158,7 @@ if (isset($_POST['submit'])) {
                                         <input class="form-control" id="student_number" name="student_number" type="text" placeholder="Student Number" value="<?php echo $student_number; ?>" required />
                                         <label for="student_number">Student Number</label>
                                     </div>
+
                                     <!-- birthday input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="birthday" name="birthday" type="date" placeholder="Student Number" value="<?php echo $birthday; ?>" required />
